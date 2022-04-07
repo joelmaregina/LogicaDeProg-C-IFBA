@@ -159,21 +159,37 @@ int main()
 // 16. Escreva um programa para gerar o invertido de um número com três algarismos (exemplo: o invertido de 498 é 894).
 int main()
 {
-    int numeroNormal;
-    int centena;
-    int restoCentena;
-    int dezena;
-    int unidade;
+  int numeroNormal, numeroInvertido;
+    int centena, dezena, unidade;
 
     printf("Digite o número que será invertido:\n");
     scanf("%i", &numeroNormal);
-    
+   
     centena = numeroNormal/100;
-    restoCentena = numeroNormal%100;
-    dezena = restoCentena/10;
-    unidade = restoCentena%10;
-    
-    printf("O número %i invertido é: %i%i%i", numeroNormal, unidade, dezena, centena);
+    dezena = (numeroNormal%100)/10;
+    unidade = numeroNormal%10;
+    numeroInvertido = unidade*100 + dezena*10 + centena;
+   
+    printf("O número %i invertido é: %i", numeroNormal, numeroInvertido);
+}
+
+// 21. Escreva um programa que lê um numero em decimal (que funcione para numeros entre 0 e 512) e o transfome em octal
+int main()
+{
+    int numeroDecimal;
+    int unidade, dezena, centena;
+    int numeroOctal;
+
+    printf("Digite o número que será convertido:\n");
+    scanf("%i", &numeroDecimal);
+   
+    unidade = numeroDecimal%8;
+    dezena = (numeroDecimal/8)%8;
+    centena = ((numeroDecimal/8)/8)%8;
+   
+    numeroOctal = unidade + dezena*10 + centena*100;
+   
+    printf("O número decimal %i convertido para octal é de: %i", numeroDecimal, numeroOctal);
 }
 
 
