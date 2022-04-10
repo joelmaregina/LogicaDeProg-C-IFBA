@@ -155,6 +155,39 @@ int main()
 
 // 10. Converter um inteiro informado menor que 32 para sua representação em binário
 
+// 11. Faça um algoritmo para calcular a nota semestral de um aluno. A nota semestral é obtida pela média aritmética entre a nota de 2 bimestres. Cada nota de bimestre é composta por 2 notas de provas.
+int main()
+{
+    float prova1, prova2, prova3, prova4;
+    float primeiroBimestre, segundoBimestre;
+    float semestre;
+    
+    printf("Digite as notas das sua 4 provas:\n");
+    scanf("%f %f %f %f", &prova1, &prova2, &prova3, &prova4);
+    
+    primeiroBimestre = (prova1 + prova2)/2.0;
+    segundoBimestre = (prova3 + prova4)/2.0;
+    
+    semestre = (primeiroBimestre + segundoBimestre)/2.0;
+    
+    printf("A média do semestre é %.2f", semestre);
+}
+
+// 12. Faça um algoritmo que transforme uma velocidade fornecida em m/s pelo usuário para Km/h. Para tal, multiplique o valor em m/s por 3,6.
+int main()
+{
+    float valorEmMetros;
+    float valorEmKilometros;
+    
+    printf("Digite a velocidade em m/s que você quer transformar em Km/h\n");
+    scanf("%f", &valorEmMetros);
+    
+    valorEmKilometros = valorEmMetros * 3.6;
+    
+    printf("A velocidade transformada em Km/h é de: %.2f\n", valorEmKilometros);
+}
+
+
 
 // 16. Escreva um programa para gerar o invertido de um número com três algarismos (exemplo: o invertido de 498 é 894).
 int main()
@@ -192,7 +225,35 @@ int main()
     printf("O número decimal %i convertido para octal é de: %i", numeroDecimal, numeroOctal);
 }
 
+// 22. Escreva um programa que leia um número e exiba se ele é positivo ou negativo.
+int main()
+{
+    float valor;
+    
+    printf("Digite o numero que você quer avaliar se é positivo ou negativo\n");
+    scanf("%f", &valor);
+    
+    if (valor > 0){
+        printf("O valor digitado é positivo");
+    } else if (valor <0){
+        printf("O valor digitado é negativo");
+    }
+}
 
+// 24. Escreva um programa que leia um número e imprima se este número é ou não par.
+int main()
+{
+    int valor;
+    
+    printf("Digite o numero que você quer avaliar se é par ou impar\n");
+    scanf("%d", &valor);
+    
+    if (valor % 2 == 0 ){
+        printf("O valor digitado é par");
+    } else{
+        printf("O valor digitado é impar");
+    }
+}
 
 
 
