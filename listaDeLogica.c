@@ -154,6 +154,28 @@ int main()
 }
 
 // 10. Converter um inteiro informado menor que 32 para sua representação em binário
+int main()
+{
+   int inteiro;
+   int binario;
+   int bin1, bin2, bin3, bin4, bin5, bin6;
+   int divisao = 0;
+   
+   printf("Digite o número inteiro que você quer transformar em binário: \n");
+   scanf("%d", &inteiro);
+   
+   bin6 = inteiro%2;
+   bin5 = (inteiro/2)%2;
+   bin4 = ((inteiro/2)/2)%2;
+   bin3 = (((inteiro/2)/2)/2)%2;
+   bin2 = ((((inteiro/2)/2)/2)/2)%2;
+   bin1 = (((((inteiro/2)/2)/2)/2)/2)%2;
+   
+   binario = bin1*100000 + bin2*10000 + bin3*1000 + bin4*100 + bin5*10 + bin6;
+   
+   printf("O numero digitado em binário é %d", binario);
+}
+
 
 // 11. Faça um algoritmo para calcular a nota semestral de um aluno. A nota semestral é obtida pela média aritmética entre a nota de 2 bimestres. Cada nota de bimestre é composta por 2 notas de provas.
 int main()
@@ -173,24 +195,60 @@ int main()
     printf("A média do semestre é %.2f", semestre);
 }
 
-
 // 12. Faça um algoritmo que transforme uma velocidade fornecida em m/s pelo usuário para Km/h. Para tal, multiplique o valor em m/s por 3,6.
 int main()
 {
-    float valorEmMetros;
-    float valorEmKilometros;
-    
-    printf("Digite a velocidade em m/s que você quer transformar em Km/h\n");
-    scanf("%f", &valorEmMetros);
-    
-    valorEmKilometros = valorEmMetros * 3.6;
-    
-    printf("A velocidade transformada em Km/h é de: %.2f\n", valorEmKilometros);
+   float valorEmMetros;
+   float valorEmKm ;
+
+   printf("Digite a velocidade em m/s: \n");
+   scanf("%f", &valorEmMetros);
+   
+  valorEmKm = valorEmMetros*3.6;
+   
+   printf("O numero digitado em Km/h é de:  %.2f km/h", valorEmKm);
 }
 
-// 13.
-// 14.
-// 15. 
+
+// 13.Um circuito elétrico é composto de duas resistências R1 e R2 em paralelo, e ambas em
+// sequência de uma resistência R3. Faça um algoritmo para calcular a resistência
+// equivalente desse circuito.
+int main()
+{
+   float resistencia1, resistencia2, resistencia3;
+   float resistenciaEquivalente ;
+
+   printf("Digite os valores das resistências: \n");
+   scanf("%f %f %f", &resistencia1, &resistencia2, &resistencia3);
+   
+  resistenciaEquivalente = ((resistencia1*resistencia2)/(resistencia1+resistencia2))+resistencia3;
+   
+   printf("A resistência equivalente deste circuito é de: %.2f", resistenciaEquivalente);
+}
+
+// 14. Questão do semáforo
+
+// 15. Num dia de sol, você deseja medir a altura de um prédio, porém, a trena não é suficientemente longa. Assumindo que seja possível 
+// medir sua sombra e a do prédio no chão, e que você lembre da sua altura, faça um programa para ler os dados necessários e calcular a altura do prédio.
+int main()
+{
+   float alturaPredio, minhaAltura;
+   float sombraPredio, minhaSombra;
+
+   printf("Digite o valor da sua altura: \n");
+   scanf("%f" , &minhaAltura);
+   
+   printf("Digite o valor da sua sombra: \n");
+   scanf("%f" , &minhaSombra);
+   
+   printf("Digite o valor da sombra do prédio: \n");
+   scanf("%f" , &sombraPredio);
+   
+    alturaPredio = (sombraPredio/minhaSombra) * minhaAltura;
+   
+   printf("A altura do prédio é de: %.2f \n", alturaPredio);
+   
+}
 
 // 16. Escreva um programa para gerar o invertido de um número com três algarismos (exemplo: o invertido de 498 é 894).
 int main()
@@ -209,10 +267,94 @@ int main()
     printf("O número %i invertido é: %i", numeroNormal, numeroInvertido);
 }
 
-// 17.
-// 18.
-// 19.
-// 20.
+// 17. Um programa para gerenciar os saques de um caixa eletrônico deve possuir algum mecanismo para decidir o 
+// número de notas de cada valor que deve ser disponibilizado para o cliente que realizou o saque. Um possível critério seria
+// o da "distribuição ótima" no sentido de que as notas de menor valor fossem distribuídas em número mínimo possível. Por exemplo,
+// se a quantia solicitada fosse R$ 87,00, o programa deveria indicar uma nota de R$ 50,00, três notas de R$ 10,00, uma nota de 
+// R$ 5,00 e duas notas de R$ 1,00. Escreva um programa que receba o valor da quantia solicitada e retorne a distribuição das notas
+// de acordo com o critério da distribuição ótima (considere existir notas de R$1,00; R$2,00; R$5,00; R$10,00; R$20,00; R$50,00 e R$100,00).
+int main()
+{
+    int valorSaque;
+    int nota1 = 0;
+    int nota2 = 0;
+    int nota5 = 0;
+    int nota10 = 0;
+    int nota50 = 0;
+    int nota100 = 0;
+    int valorRestante = 0;
+    
+    printf("Digite o valor do saque: \n");
+    scanf("%i" , &valorSaque);
+    
+    if (valorSaque >= 100){
+        valorRestante = valorSaque - 100;
+        if (valorRestante >= 0){
+            
+        }
+        printf ("")
+    }
+}
+
+// 18. Escreva um programa que permute o valor de duas variáveis inteiras.
+int main()
+{
+   int var1, var2;
+
+   printf("Digite o valor da variável 1: \n");
+   scanf("%i" , &var1);
+   
+   printf("Digite o valor da variável 2: \n");
+   scanf("%i" , &var2);
+   
+   var1 = var1 + var2;
+   var2 = var1 - var2;
+   var1 = var1 - var2;
+   
+   printf("O valor de var1 agora é: %i \n", var1);
+   printf("O valor de var2 agora é: %i \n", var2);
+   
+}
+
+// 19. Escreva um programa que calcule a raiz de uma equação do primeiro grau.
+
+
+// 20. Uma loja vende seus produtos no sistema entrada mais duas prestações, sendo a entrada maior do que ou igual às duas prestações, 
+// as quais devem ser iguais, inteiras e as maiores possíveis. Por exemplo, se o valor da mercadoria for R$ 270,00, a entrada e as duas
+// prestações são iguais a R$ 90,00; se o valor da mercadoria for R$ 302,75, a entrada é de R$ 102,75 e as duas prestações são a iguais 
+// a R$ 100,00. Escreva um programa que receba o valor da mercadoria e forneça o valor da entrada e das duas prestações, de acordo com 
+//as regras acima. Observe que uma justificativa para a adoção desta regra é que ela facilita a confecção e o consequente pagamento dos
+// boletos das duas prestações.
+int main()
+{
+    float valorCompra;
+    float valorEntrada;
+    float valorPrestacao;
+    
+    printf("Digite o valor da compra: \n");
+    scanf("%f" , &valorCompra);
+    
+    valorPrestacao = valorCompra/3.0;
+    valorEntrada = valorPrestacao + (valorCompra % 3.0);
+    
+    printf("O valor da entrada é de: %.2f e o valor das prestações é de: %2.f \n", valorEntrada, valorPrestacao);
+
+}
+
+// 21. Escreva um programa que leia um número e exiba se ele é positivo ou negativo.
+int main()
+{
+    float valor;
+    
+    printf("Digite o numero que você quer avaliar se é positivo ou negativo\n");
+    scanf("%f", &valor);
+    
+    if (valor > 0){
+        printf("O valor digitado é positivo");
+    } else if (valor <0){
+        printf("O valor digitado é negativo");
+    }
+}
 
 // 21ex. Escreva um programa que lê um numero em decimal (que funcione para numeros entre 0 e 512) e o transfome em octal
 int main()
@@ -231,21 +373,6 @@ int main()
     numeroOctal = unidade + dezena*10 + centena*100;
    
     printf("O número decimal %i convertido para octal é de: %i", numeroDecimal, numeroOctal);
-}
-
-// 21. Escreva um programa que leia um número e exiba se ele é positivo ou negativo.
-int main()
-{
-    float valor;
-    
-    printf("Digite o numero que você quer avaliar se é positivo ou negativo\n");
-    scanf("%f", &valor);
-    
-    if (valor > 0){
-        printf("O valor digitado é positivo");
-    } else if (valor <0){
-        printf("O valor digitado é negativo");
-    }
 }
 
 // 22. Escreva um programa que leia um número e exiba o seu módulo.
@@ -430,6 +557,59 @@ int main()
         valorASerPago = (litros * precoGasolina)*0.95;
         printf("O valor a ser pago é de: %.2f", valorASerPago);
     }   
+}
+
+// 35. Escreva um programa que leia um número inteiro de 1 a 7 e informe o dia da semana correspondente, sendo domingo o dia de número 1. Se o número
+//  não corresponder a um dia da semana, mostre uma mensagem de erro.
+int main()
+{
+    int dia;
+    
+    printf("Digite numero indicando o dia da semana: \n");
+    scanf("%i" , &dia);
+    
+    switch(dia){
+        case 1:
+            printf("Domingo");
+            break;
+        case 2:
+            printf("Segunda-feira");
+            break;
+        case 3:
+            printf("Terça-feira");
+            break;
+        case 4:
+            printf("Quarta-feira");
+            break;
+        case 5:
+            printf("Quinta-feira");
+            break;
+        case 6:
+            printf("Sexta-feira");
+            break;
+        case 7:
+            printf("Sábado");
+            break;
+        default: 
+            printf("Numero inválido, digite um valor de 1 a 7");
+    }
+}
+
+// 38. Chama-se ano bissexto o ano ao qual é acrescentado um dia extra, ficando ele com 366 dias, um dia a mais do que os anos normais de 365 dias, 
+// ocorrendo a cada quatro anos. Escreva um programa que verifique se um ano é bissexto. Um ano é bissexto se ele é divisível por 4. Entretanto,
+// se o ano é divisível por 100, ele não é bissexto. Mas, se ele for divisível por 400, ele volta a ser bissexto.
+int main()
+{
+    int ano;
+    
+    printf("Digite o ano para saber se ele é bisexto ou não: \n");
+    scanf("%i" , &ano);
+    
+    if ((ano % 4 == 0)  && (ano % 100) != 0 || (ano % 400 == 0)){
+        printf ("O ano %i é um ano bisexto", ano);
+    } else {
+        printf ("O ano %i não é um ano bisexto", ano);
+    }
 }
 
 
