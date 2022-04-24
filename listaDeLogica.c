@@ -559,6 +559,80 @@ int main()
     }   
 }
 
+//32. Escreva um programa que leia um caracter e diga se ele é uma vogal, consoante, número ou um símbolo (qualquer outro caracter, que não uma letra ou número).
+int main()
+{
+  char caracter;
+  
+  printf("Digite o caracter que você quer descobrir se é uma vogal, consoante, número ou símbolo: \n");
+  scanf("%c", &caracter);
+  
+  if (caracter == 'a' || caracter == 'e' || caracter == 'i' || caracter == 'o' || caracter == 'u' || caracter == 'A' || caracter == 'E' || caracter == 'I' || caracter == 'O' || caracter == 'U'){
+        printf("O caracter digitado é uma vogal");
+  } else if (caracter == '0' || caracter == '1' || caracter == '2' || caracter == '3' || caracter == '4' || caracter == '5' || caracter == '6' || caracter == '7' || caracter == '8' || caracter == '9'){
+        printf("O caracter digitado é um número");
+  } else if (caracter == 'b' || caracter == 'B' || caracter == 'c' || caracter == 'C' || caracter == 'd' || caracter == 'D' || caracter == 'f' || caracter == 'F' || caracter == 'g' || caracter == 'G' || caracter == 'h' || caracter == 'H' || caracter == 'j' || caracter == 'J' || caracter == 'l' || caracter == 'L' || caracter == 'm' || caracter == 'M' || caracter == 'n' || caracter == 'N' || caracter == 'p' || caracter == 'P' || caracter == 'q' || caracter == 'Q' ||  caracter == 'r' || caracter == 'R' || caracter == 's' || caracter == 'S' || caracter == 't' || caracter == 'T' || caracter == 'v' || caracter == 'V' || caracter == 'x' || caracter == 'X' || caracter == 'z' || caracter == 'Z' || caracter == 'k' || caracter == 'K' || caracter == 'w' || caracter == 'W' || caracter == 'y' || caracter == 'Y'){
+        printf("O caracter digitado é uma consoante");
+  } else {
+        printf("O caracter digitado é um símbolo");
+  }
+}
+
+//33. Escreva um algoritmo que leia 2 valores (x e y), que devem representar as coordenadas de um ponto em um plano. A seguir, determine qual
+//o quadrante ao qual pertence o ponto, ou se está sobre um dos eixos cartesianos ou na origem (x=y=0).
+int main()
+{
+  float x, y;
+  
+  printf("Digite o valor de x \n");
+  scanf("%f", &x);
+  
+  printf("Digite o valor de y \n");
+  scanf("%f", &y);
+  
+  if (x == 0 && y == 0){
+        printf("O ponto está na origem");
+  } else if ( x > 0 && y > 0 ){
+        printf("O ponto está no 1º quadrante");
+  } else if ( x < 0 && y > 0 ){
+        printf("O ponto está no 2º quadrante");
+  } else if ( x < 0 && y < 0 ){
+        printf("O ponto está no 3º quadrante");
+  } else if ( x > 0 && y < 0 ){
+        printf("O ponto está no 4º quadrante");
+  } else if (x > 0 && y == 0 || x == 0 && y > 0 || x < 0 && y == 0 || x == 0 && y < 0){
+      printf("O ponto está sobre um dos eixos cartesianos");
+  }
+}
+
+// 34. Uma financeira usa o seguinte critério para conceder empréstimos: o valor total do empréstimo deve ser até dez vezes o valor da renda mensal do
+//  solicitante e o valor da prestação deve ser no máximo 30% da renda mensal do solicitante. Escreva um programa que leia a renda mensal de um solicitante,
+//   o valor total do empréstimo solicitado e o número de prestações que o solicitante deseja pagar e informe se o empréstimo pode ou não ser concedido.
+int main()
+{
+    float renda, emprestimo;
+    float valorPrestacoes;
+    int numPrestacoes;
+    
+    printf("Digite o valor da sua renda: \n");
+    scanf("%f", &renda);
+    
+    printf("Digite o valor que queres de empréstimo: \n");
+    scanf("%f", &emprestimo);
+    
+    printf("Digite o número quantidade prestações que queres para pagar o empréstimo: \n");
+    scanf("%d", &numPrestacoes);
+    
+    valorPrestacoes = emprestimo / numPrestacoes;
+    
+    if (emprestimo <= (renda*10) && valorPrestacoes <= (renda*0.3)){
+        printf("O empréstimo pode ser realizado!");
+    } else{
+        printf("O valor da sua renda ou número de prestações solicitados não são suficientes!");
+    }
+
+}
+
 // 35. Escreva um programa que leia um número inteiro de 1 a 7 e informe o dia da semana correspondente, sendo domingo o dia de número 1. Se o número
 //  não corresponder a um dia da semana, mostre uma mensagem de erro.
 int main()
@@ -595,6 +669,93 @@ int main()
     }
 }
 
+// 36. Em uma certificação são feitos são feitos 5 exames (I, II, III, IV e V). Escreva um programa que leia as notas destes exames
+//  e imprima a classificação do aluno, sabendo que a média é 70. Classificação:
+//  A – passou em todos os exames;
+//  B – passou em I, II e IV, mas não em III ou V;
+//  C – passou em I e II, III ou IV, mas não em V.
+//     Reprovado – outras situações.
+int main()
+{
+    float exI, exII, exIII, exIV, exV;
+    float media;
+    
+    printf("Digite as notas dos seus 5 exames: \n");
+    scanf("%f %f %f %f %f", &exI, &exII,  &exIII,  &exIV,  &exV);
+    
+    //media = exI + exII + exIII + exIV + exV / 5; ?????????????????????
+    
+    if (exI >= 70 && exII >= 70 && exIII >=70 && exIV >= 70 && exV >= 70){
+        printf("Você passou em todos os exames: Classificação A !");
+    } else if ((exI >= 70 && exII >= 70 && exIV >= 70) &&  (exIII >= 70 || exV >= 70)) {
+        printf("Você passou nos exames I, II e IV, mas não no III ou V: Classificação B");
+    } else if ((exI >= 70 && exII >= 70) && (exIII >= 70 ||  exIV >= 70) &&  exV < 70){
+        printf("Você passou nos exames I e II, no III ou IV, mas não no V: Classificação C");
+    } else {
+        printf("Você foi reprovado!");
+    }
+}
+
+// 37. Uma Cia de pulverização utiliza avião para pulverizar lavouras. Os custos de pulverização dependem do tipo de praga e da área a ser contratada conforme a tabela:
+// Tipo 1 – ervas daninhas R$ 50,00 por acre;
+// Tipo 2 – gafanhotos R$ 100,00 por acre;
+// Tipo 3 – broca R$ 150,00 por acre;
+// Tipo 4 – todos acima R$ 250,00 por acre.
+// Se a área a ser pulverizada for superior a 1000 acres, o fazendeiro tem um desconto de 5%. Em adição, qualquer fazendeiro cujo custo for maior 
+// do que R$ 750,00 tem um desconto de 10% sobre o valor que ultrapassar os R$ 750,00. Caso ambos os descontos se aplicam o da área é calculado
+// antes. Fazer um algoritmo que leia: o tipo de pulverização (1 a 4) e área a ser pulverizada; e imprima o valor a ser pago.
+int main()
+{
+    float area;
+    int tipoPulverizacao;
+    float valorPulverizacao;
+    
+    printf("Digite o tipo de pulverização: \n");
+    scanf("%d", &tipoPulverizacao);
+    
+    printf("Digite a área a ser pulverizada: \n");
+    scanf("%f", &area);
+    
+    if (tipoPulverizacao == 1){
+        valorPulverizacao = area * 50.0;
+        if(area > 1000){
+            valorPulverizacao = valorPulverizacao - (valorPulverizacao * 0.05);
+        }            
+        if (valorPulverizacao > 750){
+                valorPulverizacao = valorPulverizacao - ((valorPulverizacao - 750) * 0.10);
+            }
+        printf ("O valor da pulverização é de %.2f :", valorPulverizacao);
+    } else if (tipoPulverizacao == 2){
+        valorPulverizacao = area * 100.0;
+        if(area > 1000){
+            valorPulverizacao = valorPulverizacao - (valorPulverizacao * 0.05);
+        }            
+        if (valorPulverizacao > 750){
+                valorPulverizacao = valorPulverizacao - ((valorPulverizacao - 750) * 0.10);
+            }
+        printf ("O valor da pulverização é de %.2f :", valorPulverizacao);
+    } else if (tipoPulverizacao == 3){
+        valorPulverizacao = area * 150.0;
+        if(area > 1000){
+            valorPulverizacao = valorPulverizacao - (valorPulverizacao * 0.05);
+        }            
+        if (valorPulverizacao > 750){
+                valorPulverizacao = valorPulverizacao - ((valorPulverizacao - 750) * 0.10);
+            }
+        printf ("O valor da pulverização é de %.2f :", valorPulverizacao);
+    } else if (tipoPulverizacao == 4){
+        valorPulverizacao = area * 250.0;
+        if(area > 1000){
+            valorPulverizacao = valorPulverizacao - (valorPulverizacao * 0.05);
+        }            
+        if (valorPulverizacao > 750){
+                valorPulverizacao = valorPulverizacao - ((valorPulverizacao - 750) * 0.10);
+            }
+        printf ("O valor da pulverização é de %.2f :", valorPulverizacao);
+    }
+}
+
+
 // 38. Chama-se ano bissexto o ano ao qual é acrescentado um dia extra, ficando ele com 366 dias, um dia a mais do que os anos normais de 365 dias, 
 // ocorrendo a cada quatro anos. Escreva um programa que verifique se um ano é bissexto. Um ano é bissexto se ele é divisível por 4. Entretanto,
 // se o ano é divisível por 100, ele não é bissexto. Mas, se ele for divisível por 400, ele volta a ser bissexto.
@@ -612,6 +773,45 @@ int main()
     }
 }
 
+// 39. Em diversas situações, é útil o uso de dígitos verificadores. Dígito verificador ou algarismo de controle é um mecanismo de autenticação utilizado para
+// verificar a validade e a autenticidade de um valor numérico, evitando dessa forma fraudes ou erros de transmissão ou digitação. Uma das formas mais comuns de 
+// cálculo de dígito verificadores é o método conhecido por módulo 11. O cálculo do DV no módulo 11 é feito, é feito como se segue: para calcular o primeiro dígito
+// verificador, cada dígito do número, começando da direita para a esquerda (do dígito menos significativo para o dígito mais significativo) é multiplicado, na ordem,
+// por 2, depois 3, depois 4 e assim sucessivamente, até o primeiro dígito do número. O somatório dessas multiplicações dividido por 11. O resto desta divisão (módulo 11)
+// é subtraído da base (11), o resultado é o dígito verificador. O Banco do Brasil utiliza o código módulo 11, substituindo por X o valor do dígito verificador quando
+// este é 10. Escreva um programa que receba um número com os 4 primeiros dígitos de uma agência e imprima o número da agência completo (numero – dv). 
+// ________________________________________________________________________________
+// | Agência | Alg.1 | Alg.2 | Alg.3 | Alg.4 | DV                                 |
+// | 4870-4  |   4   |   8   |   7   |   0   | (4*5) + (8*4) + (7*3) + (0*2) = 73 |
+// |         |       |       |       |       | 73 mod 11 = 7 --- 11-7 = 4         |
+// |------------------------------------------------------------------------------|
+// | 4881-X  |   4   |   4   |   4   | 1     | (4*5) + (8*4) + (8*3) + (1*2) = 78 |
+// |         |       |       |       |       |  78 mod 11 = 1 --- 11 – 1 = 10 (X) |
+// ================================================================================
+int main()
+{
+    int agencia;
+    int ag1, ag2, ag3, ag4;
+    int digitoVerificador;
+    int mod11;
+    
+    printf("Digite o  número da agência: \n");
+    scanf("%d", &agencia);
+    
+    ag1 = agencia/1000;
+    ag2 = (agencia%1000)/100;
+    ag3 = ((agencia%1000)%100)/10;
+    ag4 = ((agencia%1000)%100)%10;
+    
+    mod11 = ((ag1 *5) + (ag2 * 4) + (ag3 * 3) + (ag4 * 2)) % 11;
+    digitoVerificador = 11 - mod11;
+    
+    if (digitoVerificador == 10){
+        printf ("O número completo da agência é : %d-X", agencia);
+    } else{
+        printf ("O número completo da agência é : %d-%d", agencia, digitoVerificador);
+    }
+}
 
 
 
