@@ -24,8 +24,7 @@ int main()
     float valorAposta;
     int numAposta, numSorteio;
     float premio;
-    int uniA, dezA, cemA, milA;
-    int uniB, dezB, cemB, milB;
+    int grupoAposta, grupoSorteio;
 
     printf("Digite o valor da sua aposta :\n");
     scanf("%f", &valorAposta);
@@ -33,29 +32,31 @@ int main()
     printf("Digite o seu número apostado :\n");
     scanf("%d", &numAposta);
 
-    printf("Digite o seu número sorteado:\n");
+    printf("Digite o seu número sorteado :\n");
     scanf("%d", &numSorteio);
+    
+    if (((numAposta % 100) % 4) == 0){
+        grupoAposta = ((numAposta % 100) / 4) - 2;
+    } else{
+        grupoAposta = ((numAposta % 100) / 4) - 1;
+    }
+    
+    if(((numSorteio % 100) % 4) == 0){
+        grupoSorteio = ((numSorteio % 100) / 4) - 2;
+    }else {
+        grupoSorteio = ((numSorteio % 100) / 4) - 1;
+    }
 
-    uniA = numAposta%10;
-    dezA = (((numAposta%10000)%1000)%100)/10;
-    cemA = ((numAposta%10000)%1000)/100;
-    milA = (numAposta%10000)/1000;
-    
-    uniB = numSorteio%10;
-    dezB = (((numSorteio%10000)%1000)%100)/10;
-    cemB = ((numSorteio%10000)%1000)/100;
-    milB = (numSorteio%10000)/1000;
-    
-    if(uniA == uniB && dezA == dezB && cemA == cemB && milA == milB){
+    if((numAposta % 10000) == (numSorteio % 10000)){
         premio = valorAposta * 3000;
         printf("Parabéns, você ganhou! Seu prêmio será de: %.2f", premio);
-    } else if (uniA == uniB && dezA == dezB && cemA == cemB){
+    } else if ((numAposta % 1000) == (numSorteio % 1000)){
         premio = valorAposta * 500;
         printf("Parabéns, você ganhou! Seu prêmio será de: %.2f", premio);
-    } else if (uniA == uniB && dezA == dezB){
+    } else if ((numAposta % 100) == (numSorteio % 100)){
         premio = valorAposta * 50;
         printf("Parabéns, você ganhou! Seu prêmio será de: %.2f", premio);
-    } else if (dezA <= (dezB + 3)){
+    } else if ((grupoAposta == grupoSorteio) || (grupoAposta == 23 && (numSorteio % 100 == 00)) || ((numAposta % 100 == 00) && grupoSorteio == 23)){
         premio = valorAposta * 16;
         printf("Parabéns, você ganhou! Seu prêmio será de: %.2f", premio);
     } else {

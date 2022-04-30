@@ -1,4 +1,3 @@
-#include <stdio.h>
 
 // 01. Dado o tamanho da base e da altura de um retângulo, calcular a sua área e o seu perímetro:
 int main()
@@ -310,7 +309,18 @@ int main()
 }
 
 // 19. Escreva um programa que calcule a raiz de uma equação do primeiro grau.
-
+int main()
+{
+    float a, b;
+    float raiz;
+    
+    printf("Digite os valores de a e b da equação: \n");
+    scanf("%f %f", &a, &b);
+    
+    raiz = -b/a;
+    
+    printf("A raíz da equação é: %.2f", raiz);
+}
 
 // 20. Uma loja vende seus produtos no sistema entrada mais duas prestações, sendo a entrada maior do que ou igual às duas prestações, 
 // as quais devem ser iguais, inteiras e as maiores possíveis. Por exemplo, se o valor da mercadoria for R$ 270,00, a entrada e as duas
@@ -810,406 +820,83 @@ int main()
 //40. Escreva um programa que receba um numero inteiro de 1 a 999 e mostre na tela o numero por extenso.
 //40. Escreva um programa que receba um numero inteiro de 1 a 999 e mostre na tela o
 //numero por extenso.
-
 int main()
 {
-
     int valor;
     int unidade, dezena, centena;
-    char extensoUni, extensoDez, extensoCem;
-    
+
     printf("Digite o valor que você quer que seja escrito por extenso:\n");
-    scanf("%i", &valor);
-    
+    scanf("%d", &valor);
+   
     centena = valor/100;
     dezena = (valor%100)/10;
     unidade = valor%10;
-    
+   
     switch(centena){
-        case 1:
-            if (centena == 1 && dezena == 0 && unidade == 0){
-                printf("Cem");
-            } else {
-                printf("Cento e");
-            }
+        case 1: 
+            if (valor > 100) printf("Cento");
+            else printf ("Cem");
         break;
-        case 2:
-            if (centena == 2 && dezena == 0 && unidade == 0){
-                printf("Duzentos");
-            } else {
-                printf("Duzentos e ");
-            }
-        break;
-        case 3:
-            if (centena == 3 && dezena == 0 && unidade == 0){
-                printf("Trezentos");
-            } else {
-                printf("Trezentos e ");
-            }
-        break;
-        case 4:
-            if (centena == 4 && dezena == 0 && unidade == 0){
-                printf("Quatrocentos");
-            } else {
-                printf("Quatrocentos e ");
-            }
-        break;
-        case 5:
-            if (centena == 5 && dezena == 0 && unidade == 0){
-                printf("Quinhentos");
-            } else {
-                printf("Quinhentos e ");
-            }
-        break;
-        case 6:
-            if (centena == 6 && dezena == 0 && unidade == 0){
-                printf("Seicentos");
-            } else {
-                printf("Seicentos e ");
-            }
-        break;
-        case 7:
-            if (centena == 7 && dezena == 0 && unidade == 0){
-                printf("Setecentos");
-            } else {
-                printf("Setecento e ");
-            }
-        break;
-        case 8:
-            if (centena == 8 && dezena == 0 && unidade == 0){
-                printf("Oitocentos");
-            } else {
-                printf("Oitocentos e ");
-            }
-        break;
-        case 9:
-            if (centena == 9 && dezena == 0 && unidade == 0){
-                printf("Novecentos");
-            } else {
-                printf("Novecentos e ");
-            }
-        break;
+        case 2: printf("Duzentos"); break;
+        case 3: printf("Trezentos"); break;
+        case 4: printf("Quatrocentos"); break;
+        case 5: printf("Quinhentos"); break;
+        case 6: printf("Seicentos"); break;
+        case 7: printf("Setecentos"); break;
+        case 8: printf("Oitocentos"); break;
+        case 9: printf("Novecentos"); break;
     };
-    
+   
+    if (centena > 0 && dezena > 0){
+        printf(" e ");
+    }
+       
     switch(dezena){
-        case 1:
-            if (dezena == 1 && unidade == 0){
-                printf("Dez");
-            } else if(dezena == 1 && unidade == 1) {
-                printf("Onze");
-            } else if(dezena == 1 && unidade == 2) {
-                printf("Doze");
-            } else if(dezena == 1 && unidade == 3){
-                printf("Treze");
-            } else if (dezena == 1 && unidade == 4){
-                printf("Quatorze");
-            } else if (dezena == 1 && unidade == 5){
-                printf("Quinze");
-            } else if (dezena == 1 && unidade == 6){
-                printf("Dezeseis");
-            } else if (dezena == 1 && unidade == 7){
-                printf("Dezesete");
-            } else if (dezena == 1 && unidade == 8){
-                printf("Dezoito");
-            } else if (dezena == 1 && unidade == 9){
-                printf("Dezenove");
-            }
-        break;
-        case 2:
-            if (dezena == 2 && unidade == 0){
-                printf("Vinte");
-            } else {
-                printf ("Vinte e ");
-                    switch(unidade){
-                        case 1:
-                            printf("Um");
-                            break;
-                        case 2:
-                            printf("Dois");
-                            break;
-                        case 3:
-                            printf("Três");
-                            break;
-                        case 4:
-                            printf("Quatro");
-                            break;
-                        case 5:
-                            printf("Cinco");
-                            break;
-                        case 6:
-                            printf("Seis");
-                            break;
-                        case 7:
-                            printf("Sete");
-                            break;
-                        case 8:
-                            printf("Oito");
-                            break;
-                        case 9:
-                            printf("Nove");
-                            break;
-                    }
-            }
-        break;
-        case 3:
-            if (dezena == 3 && unidade == 0){
-                printf("Trinta");
-            } else {
-                printf ("Trinta e ");
-                    switch(unidade){
-                        case 1:
-                            printf("Um");
-                            break;
-                        case 2:
-                            printf("Dois");
-                            break;
-                        case 3:
-                            printf("Três");
-                            break;
-                        case 4:
-                            printf("Quatro");
-                            break;
-                        case 5:
-                            printf("Cinco");
-                            break;
-                        case 6:
-                            printf("Seis");
-                            break;
-                        case 7:
-                            printf("Sete");
-                            break;
-                        case 8:
-                            printf("Oito");
-                            break;
-                        case 9:
-                            printf("Nove");
-                            break;
-                    }
-            }
-        break;
-        case 4:
-            if (dezena == 4 && unidade == 0){
-                printf("Quarenta");
-            } else {
-                printf ("Quarenta e ");
-                    switch(unidade){
-                        case 1:
-                            printf("Um");
-                            break;
-                        case 2:
-                            printf("Dois");
-                            break;
-                        case 3:
-                            printf("Três");
-                            break;
-                        case 4:
-                            printf("Quatro");
-                            break;
-                        case 5:
-                            printf("Cinco");
-                            break;
-                        case 6:
-                            printf("Seis");
-                            break;
-                        case 7:
-                            printf("Sete");
-                            break;
-                        case 8:
-                            printf("Oito");
-                            break;
-                        case 9:
-                            printf("Nove");
-                            break;
-                    }
-            }
-        break;
-        case 5:
-            if (dezena == 5 && unidade == 0){
-                printf("Cinquenta");
-            } else {
-                printf ("Cinquenta e ");
-                    switch(unidade){
-                        case 1:
-                            printf("Um");
-                            break;
-                        case 2:
-                            printf("Dois");
-                            break;
-                        case 3:
-                            printf("Três");
-                            break;
-                        case 4:
-                            printf("Quatro");
-                            break;
-                        case 5:
-                            printf("Cinco");
-                            break;
-                        case 6:
-                            printf("Seis");
-                            break;
-                        case 7:
-                            printf("Sete");
-                            break;
-                        case 8:
-                            printf("Oito");
-                            break;
-                        case 9:
-                            printf("Nove");
-                            break;
-                    }
-            }
-        break;
-        case 6:
-            if (dezena == 6 && unidade == 0){
-                printf("Sessenta");
-            } else {
-                printf ("Sessenta e ");
-                    switch(unidade){
-                        case 1:
-                            printf("Um");
-                            break;
-                        case 2:
-                            printf("Dois");
-                            break;
-                        case 3:
-                            printf("Três");
-                            break;
-                        case 4:
-                            printf("Quatro");
-                            break;
-                        case 5:
-                            printf("Cinco");
-                            break;
-                        case 6:
-                            printf("Seis");
-                            break;
-                        case 7:
-                            printf("Sete");
-                            break;
-                        case 8:
-                            printf("Oito");
-                            break;
-                        case 9:
-                            printf("Nove");
-                            break;
-                    }
-            }
-        break;
-        case 7:
-            if (dezena == 7 && unidade == 0){
-                printf("Setenta");
-            } else {
-                printf ("Setenta e ");
-                    switch(unidade){
-                        case 1:
-                            printf("Um");
-                            break;
-                        case 2:
-                            printf("Dois");
-                            break;
-                        case 3:
-                            printf("Três");
-                            break;
-                        case 4:
-                            printf("Quatro");
-                            break;
-                        case 5:
-                            printf("Cinco");
-                            break;
-                        case 6:
-                            printf("Seis");
-                            break;
-                        case 7:
-                            printf("Sete");
-                            break;
-                        case 8:
-                            printf("Oito");
-                            break;
-                        case 9:
-                            printf("Nove");
-                            break;
-                    }
-            }
-        break;
-        case 8:
-            if (dezena == 8 && unidade == 0){
-                printf("Oitenta");
-            } else {
-                printf ("Oitenta e ");
-                    switch(unidade){
-                        case 1:
-                            printf("Um");
-                            break;
-                        case 2:
-                            printf("Dois");
-                            break;
-                        case 3:
-                            printf("Três");
-                            break;
-                        case 4:
-                            printf("Quatro");
-                            break;
-                        case 5:
-                            printf("Cinco");
-                            break;
-                        case 6:
-                            printf("Seis");
-                            break;
-                        case 7:
-                            printf("Sete");
-                            break;
-                        case 8:
-                            printf("Oito");
-                            break;
-                        case 9:
-                            printf("Nove");
-                            break;
-                    }
-            }
-        break;
-        case 9:
-            if (dezena == 9 && unidade == 0){
-                printf("Noventa");
-            } else {
-                printf ("Noventa e ");
-                    switch(unidade){
-                        case 1:
-                            printf("Um");
-                            break;
-                        case 2:
-                            printf("Dois");
-                            break;
-                        case 3:
-                            printf("Três");
-                            break;
-                        case 4:
-                            printf("Quatro");
-                            break;
-                        case 5:
-                            printf("Cinco");
-                            break;
-                        case 6:
-                            printf("Seis");
-                            break;
-                        case 7:
-                            printf("Sete");
-                            break;
-                        case 8:
-                            printf("Oito");
-                            break;
-                        case 9:
-                            printf("Nove");
-                            break;
-                    }
-            }
-        break;
+        case 1: 
+            if(unidade == 0) printf("Dez");
+            else if (unidade == 1) printf("Onze");
+            else if (unidade == 2) printf("Doze");
+            else if (unidade == 3) printf("Treze");
+            else if (unidade == 4) printf("Quatorze");
+            else if (unidade == 5) printf("Quinze");
+            else if (unidade == 6) printf("Dezeseis");
+            else if (unidade == 7) printf("Dezessete");
+            else if (unidade == 8) printf("Dezoito");
+            else if (unidade == 9) printf("Dezenove");
+            break;
+        case 2: printf("Vinte"); break;
+        case 3: printf("Trinta"); break;
+        case 4: printf("Quarenta"); break;
+        case 5: printf("Cinquenta"); break;
+        case 6: printf("Sessenta"); break;
+        case 7: printf("Setenta"); break;
+        case 8: printf("Oitenta"); break;
+        case 9: printf("Noventa"); break;
+    };
+   
+    if (((dezena != 1 && dezena != 0) || (centena > 0 && dezena == 0 && unidade > 0))  && unidade > 0){
+        printf(" e ");
     }
     
+    if(dezena !=1 ){
+        switch(unidade){
+            case 1: printf("Um"); break;
+            case 2: printf("Dois"); break;
+            case 3: printf("Três"); break;
+            case 4: printf("Quatro"); break;
+            case 5: printf("Cinco"); break;
+            case 6: printf("Seis"); break;
+            case 7: printf("Sete"); break;
+            case 8: printf("Oito"); break;
+            case 9: printf("Nove"); break;
+        };
+    }
+   
     if(valor == 0 ){
         printf("Zero");
     }
-    
 }
+
 
 
 
