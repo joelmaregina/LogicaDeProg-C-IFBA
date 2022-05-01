@@ -272,6 +272,8 @@ int main()
 // se a quantia solicitada fosse R$ 87,00, o programa deveria indicar uma nota de R$ 50,00, três notas de R$ 10,00, uma nota de 
 // R$ 5,00 e duas notas de R$ 1,00. Escreva um programa que receba o valor da quantia solicitada e retorne a distribuição das notas
 // de acordo com o critério da distribuição ótima (considere existir notas de R$1,00; R$2,00; R$5,00; R$10,00; R$20,00; R$50,00 e R$100,00).
+int main()
+{    
     int valor;
     int nota100, nota50, nota20, nota10, nota5, nota2, nota1;
    
@@ -286,7 +288,8 @@ int main()
     nota2 = (((((valor%100)%50)%20)%10)%5)/2;
     nota1 = ((((((valor%100)%50)%20)%10)%5)%2)/1;
    
-    printf ("O número de notas será de:\n %i notas de 100;\n %i notas de 50;\n %i notas de 20;\n %i notas de 10;\n %i notas de 5;\n %i notas de 2;\n %i notas de 1. ", nota100, nota50, nota20, nota10, nota5, nota2, nota1)
+    printf ("O número de notas será de:\n %i notas de 100;\n %i notas de 50;\n %i notas de 20;\n %i notas de 10;\n %i notas de 5;\n %i notas de 2;\n %i notas de 1. ", nota100, nota50, nota20, nota10, nota5, nota2, nota1);
+}
 
 // 18. Escreva um programa que permute o valor de duas variáveis inteiras.
 int main()
@@ -546,8 +549,7 @@ int main()
 
     printf("Digite quantos litros e o tipo de combustível (A/G): \n");
     scanf("%f %c", &litros, &tipoCombustivel);
-    
-    
+        
     if(tipoCombustivel == 'A' && litros <= 25){
         valorASerPago = (litros * precoAlcool)*0.98;
         printf("O valor a ser pago é de: %.2f", valorASerPago);
@@ -818,8 +820,6 @@ int main()
 }
 
 //40. Escreva um programa que receba um numero inteiro de 1 a 999 e mostre na tela o numero por extenso.
-//40. Escreva um programa que receba um numero inteiro de 1 a 999 e mostre na tela o
-//numero por extenso.
 int main()
 {
     int valor;
