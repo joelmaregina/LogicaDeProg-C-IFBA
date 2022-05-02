@@ -770,7 +770,7 @@ int main()
     printf("Digite o ano para saber se ele é bisexto ou não: \n");
     scanf("%i" , &ano);
     
-    if ((ano % 4 == 0)  && ((ano % 100 != 0) || (ano % 400 == 0)){
+    if ((ano % 4 == 0)  && ((ano % 100 != 0) || (ano % 400 == 0))){
         printf ("O ano %i é um ano bisexto", ano);
     } else {
         printf ("O ano %i não é um ano bisexto", ano);
