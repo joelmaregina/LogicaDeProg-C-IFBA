@@ -139,7 +139,6 @@ int main()
         case 9 : printf("Setembro"); break;
         case 10 : printf("Outubro"); break;
         case 11 : printf("Novembro"); break;
-        case 12 : printf("Dezembroo"); break;
-        
+        case 12 : printf("Dezembro"); break;
     }
 }

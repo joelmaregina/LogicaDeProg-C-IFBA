@@ -689,8 +689,6 @@ int main()
     printf("Digite as notas dos seus 5 exames: \n");
     scanf("%f %f %f %f %f", &exI, &exII,  &exIII,  &exIV,  &exV);
     
-    //media = exI + exII + exIII + exIV + exV / 5; ?????????????????????
-    
     if (exI >= 70 && exII >= 70 && exIII >=70 && exIV >= 70 && exV >= 70){
         printf("Você passou em todos os exames: Classificação A !");
     } else if ((exI >= 70 && exII >= 70 && exIV >= 70) &&  (exIII >= 70 || exV >= 70)) {
@@ -772,7 +770,7 @@ int main()
     printf("Digite o ano para saber se ele é bisexto ou não: \n");
     scanf("%i" , &ano);
     
-    if ((ano % 4 == 0)  && (ano % 100) != 0 || (ano % 400 == 0)){
+    if ((ano % 4 == 0)  && ((ano % 100 != 0) || (ano % 400 == 0)){
         printf ("O ano %i é um ano bisexto", ano);
     } else {
         printf ("O ano %i não é um ano bisexto", ano);
