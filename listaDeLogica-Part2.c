@@ -197,7 +197,27 @@ int main()
 
 // 54. Construa um programa que receba um número e verifique se ele é um número triangular. (Um número é triangular quando é resultado do 
 // produto de três números consecutivos. Exemplo: 24 = 2 x 3 x 4)
+int main()
+{
+    int i;
+    int valor, teste;
+    
+    printf("Digite o valor máximo da sua sequencia: \n");
+    scanf("%d", &valor);
 
+    for (i = 1 ; i <= valor/3; i++){
+        teste = i * (i+1) * (i+2);
+        if( valor == teste){
+           break;
+        }
+    }
+    
+    if (valor == teste){
+        printf("O número é triângular");
+    } else {
+        printf("O número não é triângular");
+    }
+}
 
 // 55. Dizemos que dois números são amigos se cada um deles é igual a soma dos divisores próprios do outro. Os divisores próprios de um 
 // número positivo N são todos os divisores inteiros positivos de N exceto o próprio N. Um exemplo de números amigos são 284 e 220, pois
@@ -274,6 +294,24 @@ int main()
 // 59. O número e (número de Euler) pode ser representado e calculado por meio da utilização da série de Taylor para e quando x=1, como a soma da 
 // seguinte série infinita: 𝑒 = 1 + (1/1!) + (1/2!) + (1/3!) + ... + (1/n!) Escreva um programa, que leia o número de termos da série (n) e imprima
 // como saída, o cálculo do número de Euler para cada um dos n primeiros elementos da série.
+int main()
+{
+    int i, j;
+    int valor ;
+    int fatorial = 1;
+    float euler = 1.0;
+    
+    printf("Digite o número de entrada: \n");
+    scanf("%d", &valor);
+    
+    for(i = 0; i <= valor; i++){
+        if (i > 0) {
+            fatorial = fatorial * i;
+            euler = euler +  1.0/ fatorial;  
+        } 
+        printf(" %d = %f \n", i, euler);
+    }
+}
 
 
 // 60. A famosa conjectura de Goldbach diz que todo inteiro par maior que 2 é soma de dois números primos. Testes foram feitos, mas ainda não se
