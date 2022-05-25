@@ -92,16 +92,11 @@ int main()
     printf ("Digite o divisor: \n");
     scanf("%d", &divisor);
     
-    for(i = 0; dividendo > divisor ; i++){
+    for(i = 0; dividendo >= divisor ; i++){
         dividendo = dividendo - divisor;
-        if(dividendo == 0){
-            resto = 0;
-        } else{
-            resto = dividendo;
-        }
+        resto = dividendo;
     }
-    
-    printf("O resto é de: %d \n", resto);
+     printf("O resto é de: %d \n", resto);
 }
 
 // 48. Escreva um programa que determine se um dado número N (digitado pelo usuário) é primo ou não.
@@ -147,12 +142,9 @@ int main()
     scanf("%d", &valor);
     
     for(i = 1; i <= 6 ; i++){
-        if (i + 1 == valor) printf ("1 %d \n", i);
-        if (i + 2 == valor) printf ("2 %d \n", i);
-        if (i + 3 == valor) printf ("3 %d \n", i);
-        if (i + 4 == valor) printf ("4 %d \n", i);
-        if (i + 5 == valor) printf ("5 %d \n", i);
-        if (i + 6 == valor) printf ("6 %d \n", i);
+        for(j = 1; j <= 6 ; j++){
+            if (i + j == valor) printf("%d %d", i, j)
+        }
     }
 }
 
@@ -317,3 +309,56 @@ int main()
 // 60. A famosa conjectura de Goldbach diz que todo inteiro par maior que 2 é soma de dois números primos. Testes foram feitos, mas ainda não se
 // achou um contra-exemplo. Escreva um programa mostrando que a afirmação é verdadeira para todo número par entre 500 e 1000. O programa deve 
 // imprimir o número par e os dois primos que somados dão o número par.
+
+// 60.1ex. Escreva um código de um sistema de votação dentre três propostas, que encerra a votação quando o usuário digita um valor negativo
+
+int main()
+{
+    int i;
+    int voto;
+    int voto0 = 0;
+    int voto1 = 0;
+    int voto2 = 0;
+   
+    for(i = 1; i > 0; i++){
+        printf("Digite seu voto \n");
+        scanf("%d", &voto);
+        if(voto == 0){
+           voto0++;
+        } else if(voto == 1){
+            voto1++;
+        }  else if(voto == 2){
+            voto2++;
+        } else if (voto < 0){
+            break;  
+        }
+    }
+    printf("O projeto 0 teve %d votos \n", voto0);
+    printf("O projeto 1 teve %d votos \n", voto1);
+    printf("O projeto 2 teve %d votos \n", voto2);
+}
+
+// 60.2ex. Escreva um código de um sistema de votação dentre 500 propostas, que encerra a votação quando o usuário digita um valor negativo
+#define QTDE_PROPOSTAS 500
+
+int main()
+{
+    int i;
+    int voto;
+    int votos[QTDE_PROPOSTAS];
+ 
+     for(i = 0; i < QTDE_PROPOSTAS; i++){
+        votos[i] = 0;
+    }
+   
+    for(i = 1; i > 0; i++){
+        printf("Digite seu voto \n");
+        scanf("%d", &voto);
+        if (voto < 0) break;  
+        if (voto <= QTDE_PROPOSTAS) votos[voto]++;
+    }
+   
+    for(i = 0; i < QTDE_PROPOSTAS; i++){
+        if (votos[i] > 0) printf("O projeto %d teve %d votos \n", i, votos[i]);
+    }
+}
