@@ -143,7 +143,7 @@ int main()
     
     for(i = 1; i <= 6 ; i++){
         for(j = 1; j <= 6 ; j++){
-            if (i + j == valor) printf("%d %d", i, j)
+            if (i + j == valor) printf("%d %d \n", i, j);
         }
     }
 }
@@ -152,14 +152,22 @@ int main()
 // FIBONACCI até o N-ésimo termo (com Nsendo uma entrada do algoritmo). 
 int main()
 {
-    int i, iAnterior;
-    int numSequencia;
+    int i;
+    int numAtual = 1;
+    int numAnterior = 1;
+    int valorSequencia = 0;
     int valor;
     
     printf("Digite o valor máximo da sua sequencia: \n");
     scanf("%d", &valor);
-    //??????????????????????????????????????????????????????????
-    for (i = 0; i > valor; i++){
+    
+    printf("A sequência de FIBONACCI para %d termos é de: %d, %d", valor, numAtual, numAnterior);
+ 
+    for (i = 0; i < valor - 2; i++){
+        valorSequencia = numAnterior + numAtual;
+        numAnterior = numAtual;
+        numAtual = valorSequencia;
+        printf (", %d", valorSequencia);
     }
 }
 
@@ -169,7 +177,38 @@ int main()
 // 2. Ai = Ai-1 - Ai-2, para i par
 // Criar um algoritmo em PORTUGOL que imprima os N primeiros termos da série de FETUCCINE, sabendo-se que para existir esta série serão
 //  necessários pelo menos três termos.
-
+int main()
+{
+    int i;
+    int primeiroValor, segundoValor;
+    int valorAtual;
+    int numTermos;
+    
+    printf("Digite o primeiro número da sequência: \n");
+    scanf("%d", &primeiroValor);
+    
+    printf("Digite o segundo número da sequência: \n");
+    scanf("%d", &segundoValor);
+    
+    printf("Digite o número de termos da sequência: \n");
+    scanf("%d", &numTermos);
+    
+    if (numTermos < 3){
+        printf ("A sequência precisa ter pelo menos 3 termos. Reinicie o programa");
+    } else {
+        printf("A sequência de FIBONACCI para %d termos é de: %d, %d", numTermos, primeiroValor, segundoValor);
+        for (i = 0; i < numTermos - 2; i++){
+            if (i % 2 == 0){
+                valorAtual = segundoValor - primeiroValor;
+            } else {
+                valorAtual = segundoValor + primeiroValor;
+            }
+            primeiroValor = segundoValor;
+            segundoValor = valorAtual;
+            printf (", %d", valorAtual);
+        }
+    }
+}
 
 // 53. Dado um país A, com 5.000.000 de habitantes e uma taxa de natalidade de 3% ao ano, e um país B com 7.000.000 de habitantes e uma taxa 
 // de natalidade de 2% ao ano, escreva um programa, que imprima o tempo necessário para que a população do país A ultrapasse a população do país B.
@@ -279,9 +318,35 @@ int main()
 }
 
 
-// 58. O valor aproximado do número π pode ser calculado usando-se a série 𝑆 = 1 − (1/3^3) + (1/5^3) - (1/7^3) + (1/7^3) ... Faça um programa que
+// 58. O valor aproximado do número π pode ser calculado usando-se a série 𝑆 = 1 − (1/3^3) + (1/5^3) - (1/7^3) + (1/9^3) ... Faça um programa que
 // calcule e imprima o valor de π usando os N primeiros termos da série (N sendo informado durante a execução do algoritmo).
-
+int main()
+{
+    int i;
+    int j = 3;
+    int valor;
+    int potencia;
+    float novoTermo;
+    float resultado = 1.0;
+    
+    printf("Digite a quantidade de termos a serem cauculados: \n");
+    scanf("%d", &valor);
+// O valor gerado pelo código não parece com o valor de PI ?????????????????????????????????????????????????
+    for(i = 1; i <= valor; i++){
+        if (i > 1){
+            potencia = j*j*j;
+            j +=2;
+            novoTermo = 1.0/potencia;
+            if (i % 2 == 0){
+                resultado = resultado - novoTermo;
+            } else{
+                resultado = resultado + novoTermo;
+            }
+        }
+        printf("Para %d termos o valor cauculado é de :%f \n",i, resultado);
+    }
+    printf("O valor final é de: %f", resultado);
+}
 
 // 59. O número e (número de Euler) pode ser representado e calculado por meio da utilização da série de Taylor para e quando x=1, como a soma da 
 // seguinte série infinita: 𝑒 = 1 + (1/1!) + (1/2!) + (1/3!) + ... + (1/n!) Escreva um programa, que leia o número de termos da série (n) e imprima
@@ -304,7 +369,6 @@ int main()
         printf(" %d = %f \n", i, euler);
     }
 }
-
 
 // 60. A famosa conjectura de Goldbach diz que todo inteiro par maior que 2 é soma de dois números primos. Testes foram feitos, mas ainda não se
 // achou um contra-exemplo. Escreva um programa mostrando que a afirmação é verdadeira para todo número par entre 500 e 1000. O programa deve 
@@ -361,4 +425,185 @@ int main()
     for(i = 0; i < QTDE_PROPOSTAS; i++){
         if (votos[i] > 0) printf("O projeto %d teve %d votos \n", i, votos[i]);
     }
+}
+
+// 60.3ex. Escreva um código que caucule o número de fatoriais de 0 até 10, salve seus valores em um array de tamanho pré-definido com o #define, e
+// imprima os valores de cada posição do array criado 
+#define NUMERO_FATORIAIS 10
+int main()
+{
+    int i;
+    int fatorial = 1;
+    int fatoriais[NUMERO_FATORIAIS];
+   
+    for(i = 0; i <= NUMERO_FATORIAIS; i++){
+        if (i > 0) {
+            fatorial = fatorial * i;
+        }
+        fatoriais[i] = fatorial;
+    }
+   
+    for(i = 0; i <= NUMERO_FATORIAIS; i++){
+        if (fatoriais[i] > 0) printf("O fatorial de %d  é : %d \n", i, fatoriais[i]);
+    }
+}
+
+//61. Faça um programa em C que crie e inicialize um array de 20 posições de inteiros com 0 para cada elemento. Imprima o vetor em seguida, 
+// indicando a posição e o valor na posição (um por linha).
+#define TAMANHO_ARRAY 20
+int main()
+{
+    int vetor[TAMANHO_ARRAY];
+    int i;
+    
+    for(i = 0; i < TAMANHO_ARRAY; i++){
+        vetor[i] = 0;
+    }
+    
+    for (i = 0; i < TAMANHO_ARRAY; i++){
+        printf("O array de posição %d possui valor de: %d \n", i, vetor[i]);
+    }
+}
+
+//62. Faça um programa em C que leia um array de 10 posições e conte quantos números pares
+// são elementos do array. Imprima esta quantidade.
+int main()
+{
+    int vetor[10] = {1, 2, 3, 4, 5, 6 ,7 ,8, 9, 10};
+    int i;
+    int par = 0;
+    
+    for (i = 0; i < 10; i++){
+        if (vetor[i] % 2 == 0) par++;
+    }
+    printf("Este array possui %d numeros pares \n", par);
+}
+
+//63. Escreva um programa que leia dois vetores de números reais de mesma dimensão (10 posições), e imprima o vetor resultante da soma destes vetores.
+int main()
+{
+    int vetor1[10] = {1, 2, 3, 4, 5, 6 ,7 ,8, 9, 10}; // Soma: 55
+    int vetor2[10] = {0, 1, 2, 6, 7, 9, 10, 16, 25, 27}; // Soma: 103
+    int soma1 = 0;
+    int soma2 = 0;
+    int somaTotal = 0; 
+    int i;
+    
+    for (i = 0; i < 10; i++){
+        soma1 += vetor1[i];
+    }
+    for (i = 0; i < 10; i++){
+        soma2 += vetor2[i];
+    }
+    
+    somaTotal = soma1 + soma2;
+    
+    printf("A soma do 1º array é de: %d \n", soma1);
+    printf("A soma do 2º array é de: %d \n", soma2);
+    printf("A soma desses 2 arrays é de: %d \n", somaTotal); // 55 + 103 = 103
+}
+
+// Faça um programa em C que leia um array de 20 inteiros e imprima o menor e o maior valor dentre os elementos do array.
+int main()
+{
+    int vetor[20] = {199, 9, 6, 7, 16, 10, 30, 33, 39, 555, 8, 23, 11, 5 , 22, 25, 27, 3, 610, 19};
+    int valorMenor = vetor[0];
+    int valorMaior = vetor[0]; 
+    int i;
+
+    
+    for (i = 0; i < 20; i++){
+        if (vetor[i] < valorMenor) valorMenor = vetor[i];
+        if (vetor[i] > valorMaior) valorMaior = vetor[i];
+    }
+    
+    printf("O menor valor do array é de: %d \n", valorMenor);
+    printf("O maior valor do array é de: %d \n", valorMaior);
+
+}
+
+// 65. Faça um programa em C que leia um array de 20 inteiros e imprima o menor e o maior valor dentre os elementos do array, 
+// bem como suas respectivas posições.
+int main()
+{
+    int vetor[20] = {9, 6, 7, 16, 10, 30, 33, 39, 8, 23, 11, 5 , 22, 25, 27, 3, 55, 199, 19, 750};
+    int valorMenor = vetor[0]; 
+    int valorMaior = vetor[0];
+    int posicaoMenor = 0;
+    int posicaoMaior = 0;
+    int i;
+
+    
+    for (i = 0; i < 20; i++){
+        if (vetor[i] < valorMenor) {
+            valorMenor = vetor[i];
+            posicaoMenor = i;
+        }
+        if (vetor[i] > valorMaior){
+           valorMaior = vetor[i];
+           posicaoMaior = i;
+        }
+    }
+    
+    printf("O menor valor do array é de: %d, e ele está na posição %d do array \n", valorMenor, posicaoMenor);
+    printf("O maior valor do array é de: %d, e ele está na posição %d do array \n", valorMaior, posicaoMaior);
+}
+
+// 66. Faça um programa em C que copie o conteúdo de um vetor de 10 posições de inteiro em um segundo vetor e imprima este último.
+int main()
+{
+    int vetor1[10] = {1, 2, 3, 4, 5, 6 ,7 ,8, 9, 10}; 
+    int vetor2[10] = {0, 1, 2, 6, 7, 9, 10, 16, 25, 27}; 
+    int i;
+
+    
+    for (i = 0; i < 10; i++){
+        vetor2[i] = vetor1[i];
+    }
+    
+    for (i = 0; i < 10; i++){
+        printf("Na posição %d do vetor 2 o valor é de: %d \n", i, vetor2[i]);
+    }
+}
+
+// 67. Faça um programa em C que leia dois vetores de 10 posições de inteiros e copie o maior valor dos dois em cada posição em um 
+// terceiro vetor. Em seguida, imprima este terceiro vetor.
+int main()
+{
+    int vetor1[10] = {10, 5, 55, 34, 22, 30, 155, 48, 6, 16}; 
+    int vetor2[10] = {0, 92, 9, 7, 89, 3, 22, 555, 0, 15};
+    int vetor3[10];
+    int i;
+
+    
+    for (i = 0; i < 10; i++){
+        if (vetor1[i] > vetor2[i]) vetor3[i] = vetor1[i];
+        if (vetor1[i] < vetor2[i]) vetor3[i] = vetor2[i];
+    }
+    
+    for (i = 0; i < 10; i++){
+        printf("A posição %d do vetor 3 possui valor de: %d \n", i, vetor3[i]);
+    }
+}
+
+// 68. Escreva um programa que leia o índice pluviométrico de cada dia do mês de junho e informe o dia que mais choveu, o dia que menos 
+// choveu e as médias pluviométricas de cada uma das duas quinzenas.
+
+// 69. Escreva um programa que leia um vetor de 15 posições de inteiros. Em seguida, o programa deve ler um valor inteiro e imprimir o número 
+// de vezes que este valor ocorre no vetor.
+int main()
+{
+    int i;
+    int array[15] = {7, 7, 6, 55, 6, 55, 8, 6, 16, 7, 6, 16, 25, 100, 16};
+    int valor;
+    int repetido = 0;
+    
+    printf("Digite o valor que você quer ver quantas vezes se repete no array: ");
+    scanf("%d", &valor);
+    
+    for (i = 0; i < 15; i++){
+        if (valor == array[i]) repetido++;
+    }
+
+    printf("O valor digitado se repete %d veze(s) no array \n", repetido);
 }
