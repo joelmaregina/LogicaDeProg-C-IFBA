@@ -500,7 +500,7 @@ int main()
     
     printf("A soma do 1º array é de: %d \n", soma1);
     printf("A soma do 2º array é de: %d \n", soma2);
-    printf("A soma desses 2 arrays é de: %d \n", somaTotal); // 55 + 103 = 103
+    printf("A soma desses 2 arrays é de: %d \n", somaTotal); // 55 + 103 = 158
 }
 
 // Faça um programa em C que leia um array de 20 inteiros e imprima o menor e o maior valor dentre os elementos do array.
@@ -586,8 +586,44 @@ int main()
     }
 }
 
-// 68. Escreva um programa que leia o índice pluviométrico de cada dia do mês de junho e informe o dia que mais choveu, o dia que menos 
-// choveu e as médias pluviométricas de cada uma das duas quinzenas.
+//68. Escreva um programa que leia o índice pluviométrico de cada dia do mês de junho e informe o dia que mais choveu, o dia que menos choveu 
+// e as médias pluviométricas de cada uma das duas quinzenas.
+#define TAM 30
+int main()
+{
+    int i;
+    float vetor[TAM]= {50.5, 60.7, 72.7, 35.8, 95.8, 99.9, 64.3, 25.3, 73.4, 56.1, 83.1, 47.5, 77.7, 89.9, 54.6, 35.9, 16.0, 0.0, 112.1, 5.5, 7.5, 6.1, 16.9, 23.4, 7.9, 1.9, 11.2, 6.2, 115.1, 199.2 };
+    float quinzena1 = 0;
+    float quinzenas2 = 0;
+    float mediaQui1, mediaQui2;
+    int maisChoveu, diaMaisChoveu;
+    int menosChoveu, diaMenosChoveu;
+    
+    maisChoveu = vetor[0];
+    menosChoveu = vetor[0];
+    
+    for(i = 0; i < TAM; i++){
+        if(menosChoveu > vetor[i]){
+            menosChoveu = vetor[i];
+            diaMenosChoveu = i+1;
+        } 
+        if(maisChoveu < vetor[i]){
+            maisChoveu = vetor[i];
+            diaMaisChoveu = i+1;
+        }
+        if(i < 15){
+            quinzena1 += vetor[i];
+            mediaQui1 = quinzena1/15.0;
+        } 
+        if(i >= 15){
+            quinzenas2 += vetor[i];
+            mediaQui2 = quinzenas2/15.0;
+        } 
+    }
+    
+    printf("O dia que mais choveu foi o dia %d, o dia que menos choveu foi o dia %d. \n A média da primeira quinzena foi de: %.2f \n A média da segunda quinzena foi de: %.2f", diaMaisChoveu, diaMenosChoveu, mediaQui1, mediaQui2);
+    
+}
 
 // 69. Escreva um programa que leia um vetor de 15 posições de inteiros. Em seguida, o programa deve ler um valor inteiro e imprimir o número 
 // de vezes que este valor ocorre no vetor.
@@ -606,4 +642,119 @@ int main()
     }
 
     printf("O valor digitado se repete %d veze(s) no array \n", repetido);
+}
+
+//70. Escreva um programa que carregue um array com tamanho variável. O tamanho máximo do array é de 100 posições (carga de array com sentinela).
+// 70. Escreva um programa que carregue um array com tamanho variável. O tamanho máximo
+#define TAM 100
+
+int main()
+{
+    int i;
+    int vetor[TAM];
+    int opcao;
+    int entrada;
+    int sentinela = 0;
+    
+    do{
+        printf("\n Digite a sua operação: \n");
+        printf("[1] Adicionar array \n");
+        printf("[2] Imprimir array \n");
+        printf("[0] Sair \n");
+        scanf("%d", &opcao);
+        
+            if(opcao == 1){
+                printf ("Digite a sua entrada: ");
+                scanf("%d", &entrada);
+                vetor[sentinela] = entrada;
+                sentinela++;
+            }else if (opcao == 2){
+                for(i = 0; i < sentinela; i++){
+                    printf(" %d ", vetor[i]);
+               }
+            }
+    }while(opcao > 0);
+    
+}
+
+// 71. Escreva um programa que leia um vetor de 10 posições de inteiros e um inteiro. O programa deve informar a primeira posição onde este inteiro
+// ocorre no vetor ou -1 caso o valor não ocorra no vetor (Busca Sequencial).
+int main()
+{
+    int vetor[10] = {10, 2, 9, 4, 8, 6, 7, 5, 3, 1};
+    int i;
+    int entrada;
+    int posicao = -1;
+   
+    printf("Digite sua entrada: ");
+    scanf("%d", &entrada);
+   
+    for (i = 0; i < 10; i++){
+        if (entrada == vetor[i]){
+          posicao = i;
+        }
+    }
+    printf("A sua entrada está na posição %d do vetor", posicao);
+}
+
+// 72. Escreva um programa que leia um vetor de 10 posições ordenados de inteiros e um inteiro. O programa deve informar a primeira posição 
+// onde este inteiro ocorre no vetor ou -1 caso o valor não ocorra no vetor (Busca Binária).
+#define TAM 10
+int main()
+{
+    int i;
+    int vetor[TAM] = {1, 2, 3, 4, 5, 6 ,7 ,8, 9, 10};
+    int entrada;
+    int posicao = -1;
+    int inicio = 0;
+    int meio;
+    int final = TAM -1;
+    
+    printf("Digite o valor que você quer conferir a existência no array \n");
+    scanf("%d", &entrada);
+
+    while (inicio <= final && posicao < 0){
+        meio = ((final - inicio) / 2) + inicio;
+        if (vetor[meio] == entrada){
+            posicao = meio;
+        } else if (vetor[meio] > entrada){
+            final = meio - 1;
+        } else {
+            inicio = meio + 1;
+        }
+    }
+    printf("O valor digitado está na posição %d do array", posicao);
+}
+
+// 73. Escreva um programa em C que leia um array de 20 inteiros, calcule e imprima:
+// a. A moda dos elementos no array (elemento mais freqüente).
+// b. A mediana dos elementos no array (elemento central)
+// c. A média
+
+// 75. Escreva um programa que ordene um array de inteiros de 15 posições utilizando o método da bolha (bubble sort).
+#define TAM 15
+#define TRUE 1
+#define FALSE 0
+int main()
+{
+    int i;
+    int vetor[TAM] = {10, 2, 11, 13, 9, 4, 15, 8, 6, 14, 7, 5, 12, 3, 1};
+    int trocou, aux;
+    
+    trocou = TRUE;
+   
+    while(trocou == TRUE){
+        trocou == FALSE;
+        for(i = 0; i < TAM - 1; i++){
+            if(vetor[i] > vetor[i+1]){
+                aux = vetor[i];
+                vetor[i] = vetor[i+1];
+                vetor[i+1] = aux;
+                trocou = TRUE;
+            }
+        }
+    }
+    for (i = 0; i < TAM; i++){
+        printf("%d ", vetor[i]);
+    }
 }
