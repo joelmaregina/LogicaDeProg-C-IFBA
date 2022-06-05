@@ -799,12 +799,13 @@ int main()
     int array[TAM];
     int sentinela = 0;
     int novoArray[TAM];
+    int arrayFreq[TAM] = {0};
     int entrada;
     int posicao;
     int opcao;
     int aux;
     int cont = 0;
-    
+    // ACHO QUE AGORA ESTÁ TOTALMENTE CORRIGIDA
     do{
         printf("Digite a sua opção \n");
         printf("[1] Inserir um elemento no final do array \n");
@@ -849,9 +850,12 @@ int main()
             for(i = 0; i < TAM; i++){
                 if(arrayFreq[i] ==1){
                     novoArray[i]= array[i];
+                } else {
+                    novoArray[i]= -1;
                 }
-                printf("%d \n", novoArray[i]);
+                if(novoArray[i] > 0) printf("%d ", novoArray[i]);
             }
+            printf("\n ");
         }
         for(i = 0; i < TAM; i++){
             printf("%d ", array[i]);
