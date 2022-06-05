@@ -645,7 +645,6 @@ int main()
 }
 
 //70. Escreva um programa que carregue um array com tamanho variável. O tamanho máximo do array é de 100 posições (carga de array com sentinela).
-// 70. Escreva um programa que carregue um array com tamanho variável. O tamanho máximo
 #define TAM 100
 
 int main()
@@ -730,6 +729,106 @@ int main()
 // a. A moda dos elementos no array (elemento mais freqüente).
 // b. A mediana dos elementos no array (elemento central)
 // c. A média
+#define TAM 20
+int main()
+{
+    int i, j;
+    int vetor[TAM] = {0, 0, 3, 6, 7, 9, 10, 12, 15, 16, 33, 35, 42, 47, 50, 50, 50, 67, 89, 92};
+    int moda;
+    int repeticoes = 0;
+    int mediana1, mediana2;
+    int media = 0;
+    int final = TAM - 1;
+    int inicio = 0;
+    int meio;
+    
+    for(i = 0; i < TAM; i++){
+        meio = (final - inicio)/2;
+        mediana1 = vetor[meio];
+        mediana2 = vetor[meio+1];
+            for(j = i + 1; j < TAM; j++){
+                if(vetor[i] == vetor[j]) repeticoes++;
+            }
+    }
+    
+    printf ("As medianas do array são: %d e %d \n A moda do array é de: %d", mediana1, mediana2, moda);
+}
+
+// 73. Escreva um programa em C que armazene um vetor de até 30 inteiros. O programa deve fornecer as seguintes operações:
+// a. Inserir um elemento no final do vetor
+// b. Inserir um elemento em uma dada posição
+// c. Remover um elemento de uma posição indicada
+// d. Remover todos elementos iguais a um valor indicado
+// e. Gerar um novo array sem duplicidades a partir deste array
+#define TAM 10
+int main()
+{
+    int i, j;
+    int array[TAM];
+    int sentinela = 0;
+    int novoArray[TAM];
+    int entrada;
+    int posicao;
+    int opcao;
+    int aux;
+    int cont = 0;
+    
+    do{
+        printf("Digite a sua opção \n");
+        printf("[1] Inserir um elemento no final do array \n");
+        printf("[2] Inserir um elemento numa dada posição \n");
+        printf("[3] Remover um elemento de uma posição indicada \n");
+        printf("[4] Remover todos elementos iguais a um valor indicado \n");
+        printf("[5] Gerar um novo array sem duplicidades a partir deste array \n");
+        scanf("%d", &opcao);
+        
+        if(opcao == 1){
+            for(i = TAM - 1; i >= 0 ;  i--){
+                printf("Digite o número que você quer adicionar ao final do array: ");
+                scanf("%d", &entrada);
+                array[i] = entrada;
+            }
+        }else if(opcao == 2){
+            printf("Digite o número que você quer adicionar ao array: ");
+            scanf("%d", &entrada);
+            printf("Digite a posição que você quer que o elemento fique: ");
+            scanf("%d", &posicao);
+            array[posicao] = entrada;
+        }else if(opcao == 3){
+            printf("Digite a posicao do elemento que você quer remover: ");
+            scanf("%d", &posicao);
+            array[posicao] = 0;
+        }else if (opcao == 4){
+            printf("Digite o elemento que você quer remover do array em todas as posições: ");
+            scanf("%d", &entrada);
+            for(i = 0; i < TAM; i++){
+                if(array[i] == entrada){
+                    array[i] = 0;
+                }
+            }
+        } else if (opcao == 5){
+             for(i = 0; i < TAM; i++){
+                aux = array[i];
+                for(j = i+1; j < TAM -1; j++){
+                    if (array[j] == aux){
+                        cont++;
+                    }
+                }
+                if((cont == 0 || cont == 1) && novoArray[i-1] != aux){
+                    novoArray[i] = aux;
+                    sentinela++;
+                }
+            }
+            for(i = 0; i < sentinela; i++){
+                    printf("%d \n", novoArray[i]);
+                }
+        }
+        for(i = 0; i < TAM; i++){
+            printf("%d ", array[i]);
+        }
+        printf("\n ");
+    }while(opcao > 0);
+}
 
 // 75. Escreva um programa que ordene um array de inteiros de 15 posições utilizando o método da bolha (bubble sort).
 #define TAM 15
