@@ -805,7 +805,7 @@ int main()
     int opcao;
     int aux;
     int cont = 0;
-    // ACHO QUE AGORA ESTÁ TOTALMENTE CORRIGIDA
+
     do{
         printf("Digite a sua opção \n");
         printf("[1] Inserir um elemento no final do array \n");
@@ -830,17 +830,17 @@ int main()
         }else if(opcao == 3){
             printf("Digite a posicao do elemento que você quer remover: ");
             scanf("%d", &posicao);
-            array[posicao] = 0;
+            array[posicao] = -1;
         }else if (opcao == 4){
             printf("Digite o elemento que você quer remover do array em todas as posições: ");
             scanf("%d", &entrada);
             for(i = 0; i < TAM; i++){
                 if(array[i] == entrada){
-                    array[i] = 0;
+                    array[i] = -1;
                 }
             }
          } else if (opcao == 5){
-           // PARCIALMENTE CORRIGIDA:
+         // ACHO QUE AGORA ESTÁ TOTALMENTE CORRIGIDA:
             for(i = 0; i < TAM; i++){
                 for(j = i; j < TAM; j++){
                     if(array[i] == array[j]) arrayFreq[i]++;
