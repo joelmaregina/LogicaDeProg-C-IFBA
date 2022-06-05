@@ -838,22 +838,20 @@ int main()
                     array[i] = 0;
                 }
             }
-        } else if (opcao == 5){
-             for(i = 0; i < TAM; i++){
-                aux = array[i];
-                for(j = i+1; j < TAM -1; j++){
-                    if (array[j] == aux){
-                        cont++;
-                    }
-                }
-                if((cont == 0 || cont == 1) && novoArray[i-1] != aux){
-                    novoArray[i] = aux;
-                    sentinela++;
+         } else if (opcao == 5){
+           // PARCIALMENTE CORRIGIDA:
+            for(i = 0; i < TAM; i++){
+                for(j = i; j < TAM; j++){
+                    if(array[i] == array[j]) arrayFreq[i]++;
                 }
             }
-            for(i = 0; i < sentinela; i++){
-                    printf("%d \n", novoArray[i]);
+            printf("Novo Array: ");
+            for(i = 0; i < TAM; i++){
+                if(arrayFreq[i] ==1){
+                    novoArray[i]= array[i];
                 }
+                printf("%d \n", novoArray[i]);
+            }
         }
         for(i = 0; i < TAM; i++){
             printf("%d ", array[i]);
