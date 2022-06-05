@@ -733,28 +733,60 @@ int main()
 int main()
 {
     int i, j;
-    int vetor[TAM] = {0, 0, 3, 6, 7, 9, 10, 12, 15, 16, 33, 35, 42, 47, 50, 50, 50, 67, 89, 92};
+    int vetor[TAM] = {0, 89, 3, 33, 7, 92, 50, 10, 50, 16, 4, 12, 42, 47, 15, 67, 50, 5, 92, 0};
+    int vetorFreq[TAM] = {0};
+    int maxFreq = 0;
+    float soma = 0;
+    float media = 0;
+    int aux;
+    float mediana;
     int moda;
     int repeticoes = 0;
-    int mediana1, mediana2;
-    int media = 0;
-    int final = TAM - 1;
-    int inicio = 0;
-    int meio;
     
+    /************MÉDIA************/
     for(i = 0; i < TAM; i++){
-        meio = (final - inicio)/2;
-        mediana1 = vetor[meio];
-        mediana2 = vetor[meio+1];
-            for(j = i + 1; j < TAM; j++){
-                if(vetor[i] == vetor[j]) repeticoes++;
-            }
+        soma+= vetor[i];
+    }
+    media = soma/TAM;
+    
+    /************MEDIANA************/
+    for(i = 0; i < TAM - 1; i++){
+       for(j = i+1; j < TAM; j++){
+           if(vetor[i] > vetor[j]){
+               aux = vetor[i];
+               vetor[i] = vetor[j];
+               vetor[j] = aux;
+           }
+          
+       } 
+        mediana = (vetor[TAM/2] + vetor[(TAM/2)-1])/2.0;
     }
     
-    printf ("As medianas do array são: %d e %d \n A moda do array é de: %d", mediana1, mediana2, moda);
+    /************MODA************/
+    for(i = 0; i < TAM; i++){
+        for(j = i ; j < TAM; j++){
+            if(vetor[i] == vetor[j]) vetorFreq[i]++;
+        }
+    }
+    
+    for (i = 0; i < TAM; i++){
+        if(maxFreq < vetorFreq[i]){
+            maxFreq = vetorFreq[i];
+        }
+    }
+    if (maxFreq == 1) printf("\n O array não possui Modas\n");
+    else if (maxFreq > 1){
+        for(i = 0; i < TAM; i++){
+            if(maxFreq == vetorFreq[i]){
+                printf("O array possui a moda: %d ocorrendo %d vezes no array \n", vetor[i], maxFreq);
+            }
+        }
+    }  
+    printf ("A média do array é de: %.2f \n A mediana do array é =  %.2f ", media, mediana);
 }
 
-// 73. Escreva um programa em C que armazene um vetor de até 30 inteiros. O programa deve fornecer as seguintes operações:
+
+// 74. Escreva um programa em C que armazene um vetor de até 30 inteiros. O programa deve fornecer as seguintes operações:
 // a. Inserir um elemento no final do vetor
 // b. Inserir um elemento em uma dada posição
 // c. Remover um elemento de uma posição indicada
