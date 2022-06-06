@@ -17,8 +17,44 @@ int main()
     printf("A raiz do número digitado é: %d", sub);
 }
 
-/*********************** Questão 3 ***********************/
+/*********************** Questão 2 ***********************/
 
+
+/*********************** Questão 3 ***********************/
+int main()
+{
+    int i, j;
+    int entradaPrimos;
+    int numTest1 = 3;
+    int numTest2 = 0;
+    int divisivel1 = 0 ;
+    int divisivel2 = 0 ;
+    int primosGemeos = 0;
+
+    printf("Digite o número de pares de primos (primos gêmeos) que você quer imprimir : ");
+    scanf("%d", &entradaPrimos);
+
+    printf("O(s) %d primeiro(s) primo(s) gêmeos: \n", entradaPrimos);
+
+   while(primosGemeos < entradaPrimos){
+        for(i = 2, divisivel1 = 0; i <= numTest1; i++){
+            if (numTest1 % i == 0){
+                divisivel1++;
+            }
+        }
+        numTest2 = numTest1 +2;
+        for(j = 2, divisivel2 = 0; j <= numTest2; j++){
+            if (numTest2 % j == 0){
+                divisivel2++;
+            }
+        }
+        if (divisivel1 == 1 && divisivel2 == 1){
+            printf("(%d, %d) ", numTest1, numTest2);
+            primosGemeos++;
+        }
+        numTest1++;
+   }
+}
 
 /*********************** Questão 4 ***********************/
 #define TAM 50
