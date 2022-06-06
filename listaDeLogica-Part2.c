@@ -218,7 +218,7 @@ int main()
     int paisA = 5000000;
     int paisB = 7000000;
 
-    for(i = 1; paisA <= paisB ; i++){
+    for(i = 0; paisA <= paisB ; i++){
         paisA = paisA + (paisA*0.03);
         paisB = paisB + (paisB*0.02);
     }
