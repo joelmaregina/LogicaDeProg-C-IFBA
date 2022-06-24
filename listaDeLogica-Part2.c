@@ -503,7 +503,7 @@ int main()
     printf("A soma desses 2 arrays é de: %d \n", somaTotal); // 55 + 103 = 158
 }
 
-// Faça um programa em C que leia um array de 20 inteiros e imprima o menor e o maior valor dentre os elementos do array.
+//64. Faça um programa em C que leia um array de 20 inteiros e imprima o menor e o maior valor dentre os elementos do array.
 int main()
 {
     int vetor[20] = {199, 9, 6, 7, 16, 10, 30, 33, 39, 555, 8, 23, 11, 5 , 22, 25, 27, 3, 610, 19};
@@ -877,7 +877,7 @@ int main()
     trocou = TRUE;
    
     while(trocou == TRUE){
-        trocou == FALSE;
+        trocou = FALSE;
         for(i = 0; i < TAM - 1; i++){
             if(vetor[i] > vetor[i+1]){
                 aux = vetor[i];
