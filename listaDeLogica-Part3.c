@@ -17,89 +17,60 @@
     
 
 // 76. Escreva um programa em C, que leia uma string e conte quantas ocorrências de vogais existem nesta string.
+#define TAM 200
 int main()
 {
     int i;
-    char string[20];
+    char string[TAM];
     int contador = 0;
     
     printf("Digite a sua entrada: \n");
-    scanf("%s", string);
+    fgets(string, TAM, stdin);
     
     for(i = 0; string[i] != '\0' ; i++){
         if (string[i] == 'a' || string[i] == 'e' || string[i] == 'i' || string[i] == 'o' || string[i] == 'u' || string[i] == 'A' || string[i] == 'E' || string[i] == 'I' || string[i] == 'O' ||string[i] == 'U' ){
             contador++;
         }
-        printf("%c \n", string[i]);
     }
     
     printf("O número de vogais é igual a: %i", contador);  
 }
 
 // 77. Escreva um programa em C, que leia uma string, gere uma nova string com o texto invertido e imprima esta nova string.
+#define TAM 200
 int main()
 {
-    //NÃO FUNCIONAA!!
-    int i, j;
-    char string[20];
-    char novaString[20];
-    int contador = 0;
-    int posicao;
-    
-    printf("Digite a sua entrada: \n");
-    scanf("%s", string);
-    
-    for(posicao = 0; string[i] != '\0'; posicao++)
-    
-    for(i = posicao, j = 0; string[i] != '\0' ; i-- , j++){
-       novaString[j] = string[i];
-       printf("%c", string[i]);
-       printf("%c", novaString[j]);
-       printf("\n");
-    }
-    
-    for(i = 0; novaString != '\0'; i++){
-        printf("%c", novaString[i]);
-    }
-}
-//****************************************************************************************
-#define TAM 20
-int main()
-{
-    //NÃO FUNCIONAA!!   
-    int i, j;
     char string[TAM];
     char novaString[TAM];
-    int posicao;
+    int tamanhoOriginal;
+    int iOriginal, iInvertido;
     
     printf("Digite a sua entrada: \n");
-    scanf("%s", string);
+    fgets(string, TAM, stdin);
     
-    for(posicao = 0; string[TAM] != '\0'; posicao++)
+    for(tamanhoOriginal = 0; string[tamanhoOriginal +1] != '\0'; tamanhoOriginal++); // +1 para que quando chegar q o '/0' não seja contado com o incremento(++)
+    //Não esquecer do ponto e virgula acima! Senão fica como se fosse um for dentro de outro for.
     
-    for(i = 0, j = TAM-1; i < posicao ; i++, j--){
-       novaString[j] = string[i];
-       printf("%c", string[i]);
-       printf("%c", novaString[j]);
-       printf("\n");
+    for(iInvertido = 0, iOriginal = tamanhoOriginal-1 ; iInvertido < tamanhoOriginal ; iInvertido++ , iOriginal--){
+       novaString[iInvertido] = string[iOriginal];
     }
-    novaString[j] = '\0';
+    novaString[tamanhoOriginal] = '\0';
     
-    for(i = 0; novaString != '\0'; i++){
-        printf("%c", novaString[i]);
-    }
+    puts(novaString);
+    
 }
 
 // 78. Escreva um programa em C, que leia uma string e um caracter e conte o número de ocorrências do caracter lido na string.
+#define TAM 200
 int main()
 {
     int i;
     char caracter;
-    char string[20];
+    char string[TAM];
     int contador = 0;
     
     printf("Digite a sua entrada: ");
-    scanf("%s", string);
+    fgets(string, TAM, stdin);
     printf("Digite o seu caracter: ");
     scanf(" %c", &caracter);
 
@@ -113,6 +84,85 @@ int main()
     
     printf("O número de vogais é igual a: %i", contador);  
 }
+
+// 79. Escreva um programa em C, que gere a substring de uma string original, dado a posição inicial e a final da substring.
+#define TAM 200
+int main()
+{
+    int i, j;
+    int pInicial, pFinal;
+    char string[TAM];
+    char substring[TAM];
+    
+    printf("Digite a sua string inicial: ");
+    fgets(string, TAM, stdin);
+    printf("Digite sua posição inicial: ");
+    scanf("%d", &pInicial);
+    printf("Digite sua posição final: ");
+    scanf("%d", &pFinal);
+
+    for(i = pInicial, j = 0; pInicial <= pFinal; pInicial++, j++){
+        substring[j] = string[pInicial];
+    }
+    substring[pFinal+1] = '\0';
+    
+    puts(substring);
+}
+
+// 80. Escreva um programa em C que leia duas string e informe se a primeira contém a segunda.
+// INCOMPLETA - NÃO FUNCIONA
+// #define TAM 200
+// int main()
+// {
+//     int i, j, k;
+//     char string1[TAM];
+//     char string2[TAM];
+//     char substring[TAM];
+    
+//     printf("Digite a sua primeira string : ");
+//     fgets(string1, TAM, stdin);
+//     printf("Digite a sua segunda string : ");
+//     fgets(string2, TAM, stdin);
+
+//     // puts(string1);
+//     // puts(string2);
+//     for(i = 0; string1[i] != '\0'; i++){
+//         printf("%c ", string1[i]);
+//         for(j = 0, k = 0 ; string2[j] != '\0'; i++){
+//             if(string1[i] == string2[j]){
+//                 substring[k] = string2[j];
+//                 k++;
+//             }
+//         }
+//     }
+//     substring[k] = '\0';
+//     puts(substring);
+}
+
+// 81. Escreva um programa em C que normalize uma string lida, em uma nova string. Normalizar uma string é o processo de remover os espaços 
+// excedentes que separam as palavras.
+#define TAM 100
+#define BRANCO 32
+int main()
+{
+    int iOriginal, iSemEspaco;
+    char string[TAM];
+    char stringSemEspaco[TAM];
+    
+    printf("Digite a string : ");
+    fgets(string, TAM, stdin);
+    
+    for(iOriginal = 0, iSemEspaco =0 ; string[iOriginal] != '\0'; iOriginal++){
+        if(string[iOriginal] != BRANCO){
+            stringSemEspaco[iSemEspaco] = string[iOriginal];
+            iSemEspaco++;
+        }
+    }
+    stringSemEspaco[iSemEspaco] = '\0';
+    puts(stringSemEspaco);
+}
+
+// 83. é igual a 79.
 
 // 91. Elabore um programa em C que leia valores inteiros para preencher uma matriz A 5 x 5. Você deverá criar adicionalmente dois vetores de 5 elementos:
 // somaLinhas e somaColunas. Em cada posição do vetor somaLinhas deverá ser armazenada a soma da linha correspondente na matriz A. Da mesma forma,
@@ -263,18 +313,19 @@ int main()
     int i, j;
     int contador = 0;
     
+    // for(i = 0; i < DIM; i++){
+    //     for(j = 0; j < DIM; j++, contador++){
+    //         array[contador] = matriz[i][j];
+    //     }
+    // }
+    // OU :
     for(i = 0; i < DIM; i++){
-        for(j = 0; j < DIM; j++, contador++){
-            array[contador] = matriz[i][j];
-            printf("%d ", array[contador]); // AQUI IMPRIME O ARRAY NORMAL
-        }
-        if(contador < (DIM*DIM)-1){
-            contador += 6;
+        for(j = 0; j < DIM; j++){
+            array[i * DIM + j] = matriz[i][j];
         }
     }
-    printf("\n********************************************************** \n \n");
-    for(i = 0; i < DIM*DIM; i++){ //AQUI NÃO IMPRIME " ** stack smashing detected ***: terminated"
-        printf("%d", array[i]);
+    for(i = 0; i < DIM*DIM; i++){ 
+        printf("%d ", array[i]);
     }
 }
 
@@ -332,13 +383,4 @@ int main()
         }
         printf("\n");
     }
-    /////////////// É POSSIVEL USAR UM FOR extra PRA REPETIR A REPETIÇÃO DA IMPRESSÃO DE ARRAYS DIFERENTES ??? ////////////////////////
-    // for (k = 1; k <= 4; k++){
-    //     printf("Matriz %d : \n", k)
-    //     for(i = 0; i < LIN; i++){
-    //         for(j = 0; j < COL; j++){
-    //             printf("%d \t", matriz***K***[i][j]);
-    //         }
-    //     }
-    // }
 }
