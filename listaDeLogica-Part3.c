@@ -212,56 +212,64 @@ int main()
     puts(stringSemEspaco);
 }
 
-#define TAM 100
+//82. Escreva um programa em C, que dada uma string (normalizada), imprima a maior palavra dela.
+#define TAM 200
 #define BRANCO 32
-// 82. Escreva um programa em C, que dada uma string (normalizada), imprima a maior palavra dela.
-// int main()
-// {
-     printf("incompleta - NÃO FUNCIONA!");
-//     int i, j, iOriginal, iSemEspaco;
-//     int espacos, inicio, fim, comparar;
-//     int flag = 0;
-//     int maiorPalavra = 0;
-//     char string[TAM];
-//     char stringSemEspaco[TAM];
+int main()
+{
+    int i, j, iOriginal, iSemEspaco;
+    int espacos, inicio, fim;
+    int inicioMaior = 0;
+    int fimMaior = 0;
+    int comparar = 0;
+    int flag = 0;
+    int maiorPalavra = 0;
+    char string[TAM];
+    char stringSemEspaco[TAM];
 
-//     printf("Digite a string : ");
-//     fgets(string, TAM, stdin);
+    printf("Digite a string : ");
+    fgets(string, TAM, stdin);
 
-//     for(iOriginal = 0, iSemEspaco = 0; string[iOriginal] != '\0'; iOriginal++){
-//         if (string[iOriginal] == BRANCO) espacos = 1;
-//         if (string[iOriginal + 1] == BRANCO) espacos = 2;
-//         if (string[iOriginal] != BRANCO) espacos = 0;
-//         if(string[iOriginal] != BRANCO && espacos < 2 || string[iOriginal] == BRANCO && espacos < 2 ) stringSemEspaco[iSemEspaco++] = string[iOriginal];
-//     }
-//     stringSemEspaco[iSemEspaco] = '\0';
+    for(iOriginal = 0, iSemEspaco = 0; string[iOriginal] != '\0'; iOriginal++){
+        if (string[iOriginal] == BRANCO) espacos = 1;
+        if (string[iOriginal + 1] == BRANCO) espacos = 2;
+        if (string[iOriginal] != BRANCO) espacos = 0;
+        if(string[iOriginal] != BRANCO && espacos < 2 || string[iOriginal] == BRANCO && espacos < 2 ) stringSemEspaco[iSemEspaco++] = string[iOriginal];
+    }
+    stringSemEspaco[iSemEspaco] = '\0';
     
-//     for(iSemEspaco = 0; stringSemEspaco[iSemEspaco] != '\0'; iSemEspaco++){
-//         //Para armazenar o início de cada palavra:
-//         if (stringSemEspaco[iSemEspaco] == BRANCO) flag = 0;
-//         if (stringSemEspaco[iSemEspaco] != BRANCO && flag == 0){
-//             inicio = iSemEspaco;
-//             flag++;
-//         } 
-//         for (j = inicio; stringSemEspaco[j+1] == BRANCO ; j++){
-//             // Confere se é a ultima letra da palavra:
-//             if (stringSemEspaco[j] != BRANCO) fim = j;
-//             printf("%d %d \n", fim, j);
-//         }
-//         comparar = fim - inicio; // Salva o tamanho da palavra para comparação
-//         if(comparar > maiorPalavra) maiorPalavra = comparar; //Salva o tamanho da palavra se for maior do que a anterior
-//         printf("Inicio M: %d Fim M: %d Maior Palavra: %d \n", inicio, fim, maiorPalavra);
-//     }
-//     //Cria a nova string do tamanho da palavra
-//     char palavraMaior[maiorPalavra +1];
+    for(iSemEspaco = 0; stringSemEspaco[iSemEspaco] != '\0'; iSemEspaco++){
+        //Para armazenar o início de cada palavra:
+        if (stringSemEspaco[iSemEspaco] == BRANCO) flag = 0;
+        if (stringSemEspaco[iSemEspaco] != BRANCO && flag == 0){
+            inicio = iSemEspaco;
+            flag++;
+        } 
+        for (j = iSemEspaco; stringSemEspaco[j] != '\0' && stringSemEspaco[j] != BRANCO; j++){
+            // Confere se é a ultima letra da palavra:
+            if (stringSemEspaco[j] != BRANCO){
+                fim = j;
+                break; //Para caso a letra encontrada seja a ultima antes do espaço
+            } 
+        }
+        comparar = fim - inicio; // Salva o tamanho da palavra para comparação
+        if(comparar > maiorPalavra){
+            maiorPalavra = comparar; //Salva o tamanho da palavra se for maior do que a anterior
+            if (inicio > inicioMaior) inicioMaior = inicio;  //Salva o indice do maior inicio
+            if (fim > fimMaior) fimMaior = fim; //Salva o fim do maior inicio
+        }
+        printf("Inicio: %d Fim: %d Maior Palavra: %d \n", inicio, fim, maiorPalavra);
+        printf("Inicio M: %d Fim M: %d \n", inicioMaior, fimMaior);
+    }
+    //Cria a nova string do tamanho da palavra
+    char palavraMaior[maiorPalavra+1];
     
-//     for( i = 0 , j = inicio; j <= fim; i++, j++){
-//         palavraMaior[i] = stringSemEspaco[j];
-//     }
-//     palavraMaior[j] = '\0';
-        
-//     puts(palavraMaior);
-// }
+    for(i = 0 , j = inicioMaior; j <= fimMaior; i++, j++){
+        palavraMaior[i] = stringSemEspaco[j];
+    }
+    palavraMaior[i] = '\0';
+    puts(palavraMaior);
+}
 
 // 83. é igual a 79.
 
@@ -306,8 +314,6 @@ int main()
     }
 }
 
-// 87. Escreva um programa em C, que verifique se duas strings são iguais, independente da caixa das letras.
-// Por exemplo, este programa deve dizer que “Teste”é igual a “TeStE”.
 // 87. Escreva um programa em C, que verifique se duas strings são iguais, independente da caixa das letras.
 // Por exemplo, este programa deve dizer que “Teste”é igual a “TeStE”.
 #define TAM 200
