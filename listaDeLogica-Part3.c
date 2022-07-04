@@ -314,6 +314,55 @@ int main()
     }
 }
 
+// 85. Escreva um programa que leia uma string representando um número hexadecimal (base 16) e imprima o equivalente em decimal ( base 10).
+#define TAM 6
+#define BASE 16
+
+int main()
+{
+   int i, j, k, valorDecimal;
+   int potenciaBase;
+   int decimal = 0;
+   char hexaD[TAM];
+
+   printf("Escreva o código hexadecimal:");
+   fgets(hexaD, TAM, stdin);
+
+   for(k = 0;hexaD[k+1] != '\0'; k++);
+    k--;
+   for(i = 0; hexaD[i+1] != '\0'; i++, k--){
+
+        switch(hexaD[i]){
+            case '0': valorDecimal = 0; break;
+            case '1': valorDecimal = 1; break;
+            case '2': valorDecimal = 2; break;
+            case '3': valorDecimal = 3; break;
+            case '4': valorDecimal = 4; break;
+            case '5': valorDecimal = 5; break;
+            case '6': valorDecimal = 6; break;
+            case '7': valorDecimal = 7; break;
+            case '8': valorDecimal = 8; break;
+            case '9': valorDecimal = 9; break;
+            case 'A': valorDecimal = 10; break;
+            case 'B': valorDecimal = 11; break;
+            case 'C': valorDecimal = 12; break;
+            case 'D': valorDecimal = 13; break;
+            case 'E': valorDecimal = 14; break;
+            case 'F': valorDecimal = 15; break;
+        }
+   
+            for(j = k, potenciaBase = 1; j >= 1; j--){
+                    potenciaBase *= BASE;
+                    printf("%d", potenciaBase);
+            }
+        
+
+        printf("Char: %c, valorDecimal: %d potenciaBase: %d \n", hexaD[i], valorDecimal , potenciaBase);
+        decimal += valorDecimal*potenciaBase;
+   }
+   printf("O valor do hexadecimal transformado em decimal é igual a:  %d", decimal);
+}
+
 // 87. Escreva um programa em C, que verifique se duas strings são iguais, independente da caixa das letras.
 // Por exemplo, este programa deve dizer que “Teste”é igual a “TeStE”.
 #define TAM 200
