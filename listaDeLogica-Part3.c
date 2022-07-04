@@ -110,10 +110,10 @@ int main()
 }
 
 // 80. Escreva um programa em C que leia duas string e informe se a primeira contém a segunda.
-// INCOMPLETA - NÃO FUNCIONA
 // #define TAM 200
 // int main()
 // {
+         printf("incompleta - NÃO FUNCIONA!");
 //     int i, j, k;
 //     char string1[TAM];
 //     char string2[TAM];
@@ -137,10 +137,34 @@ int main()
 //     }
 //     substring[k] = '\0';
 //     puts(substring);
-}
+//}
+// int main()
+// {
+//     int i, j, k, l;
+//     char string1[TAM];
+//     char string2[TAM];
+//     char substring[TAM];
+    
+//     printf("Digite a sua primeira string : ");
+//     fgets(string1, TAM, stdin);
+//     printf("Digite a sua segunda string : ");
+//     fgets(string2, TAM, stdin);
 
-// 81. Escreva um programa em C que normalize uma string lida, em uma nova string. Normalizar uma string é o processo de remover os espaços 
-// excedentes que separam as palavras.
+//     for(i = 0, j = 0; string1[i] != '\0'; i++){
+//         for (j = 0; string2[j] != '\0'; j++){
+//             if (string1[i] == string2[j] && string1[i+1] == string2[j+1]){
+//                 for(k = i, l = 0; string1[k] != string2[j]; k++, l++){
+//                     substring[l] = string1[i];
+//                 }
+//             } 
+//         }
+//     }
+//     substring[k] = '\0';
+//     puts(substring);
+// }
+
+
+// 81.ex Escreva um programa em C que remova os espaços de uma string lida, em uma nova string.
 #define TAM 100
 #define BRANCO 32
 int main()
@@ -162,7 +186,183 @@ int main()
     puts(stringSemEspaco);
 }
 
+// 81. Escreva um programa em C que normalize uma string lida, em uma nova string. Normalizar uma string é o processo de remover os espaços 
+// excedentes que separam as palavras.
+#define TAM 100
+#define BRANCO 32
+
+int main()
+{
+    int iOriginal, iSemEspaco;
+    int espacos;
+    char string[TAM];
+    char stringSemEspaco[TAM];
+
+    printf("Digite a string : ");
+    fgets(string, TAM, stdin);
+
+    for(iOriginal = 0, iSemEspaco = 0; string[iOriginal] != '\0'; iOriginal++){
+        if (string[iOriginal] == BRANCO) espacos = 1;
+        if (string[iOriginal + 1] == BRANCO) espacos = 2;
+        if (string[iOriginal] != BRANCO) espacos = 0;
+        if(string[iOriginal] != BRANCO && espacos < 2 || string[iOriginal] == BRANCO && espacos < 2 ) stringSemEspaco[iSemEspaco++] = string[iOriginal];;
+    }
+
+    stringSemEspaco[iSemEspaco] = '\0';
+    puts(stringSemEspaco);
+}
+
+#define TAM 100
+#define BRANCO 32
+// 82. Escreva um programa em C, que dada uma string (normalizada), imprima a maior palavra dela.
+// int main()
+// {
+     printf("incompleta - NÃO FUNCIONA!");
+//     int i, j, iOriginal, iSemEspaco;
+//     int espacos, inicio, fim, comparar;
+//     int flag = 0;
+//     int maiorPalavra = 0;
+//     char string[TAM];
+//     char stringSemEspaco[TAM];
+
+//     printf("Digite a string : ");
+//     fgets(string, TAM, stdin);
+
+//     for(iOriginal = 0, iSemEspaco = 0; string[iOriginal] != '\0'; iOriginal++){
+//         if (string[iOriginal] == BRANCO) espacos = 1;
+//         if (string[iOriginal + 1] == BRANCO) espacos = 2;
+//         if (string[iOriginal] != BRANCO) espacos = 0;
+//         if(string[iOriginal] != BRANCO && espacos < 2 || string[iOriginal] == BRANCO && espacos < 2 ) stringSemEspaco[iSemEspaco++] = string[iOriginal];
+//     }
+//     stringSemEspaco[iSemEspaco] = '\0';
+    
+//     for(iSemEspaco = 0; stringSemEspaco[iSemEspaco] != '\0'; iSemEspaco++){
+//         //Para armazenar o início de cada palavra:
+//         if (stringSemEspaco[iSemEspaco] == BRANCO) flag = 0;
+//         if (stringSemEspaco[iSemEspaco] != BRANCO && flag == 0){
+//             inicio = iSemEspaco;
+//             flag++;
+//         } 
+//         for (j = inicio; stringSemEspaco[j+1] == BRANCO ; j++){
+//             // Confere se é a ultima letra da palavra:
+//             if (stringSemEspaco[j] != BRANCO) fim = j;
+//             printf("%d %d \n", fim, j);
+//         }
+//         comparar = fim - inicio; // Salva o tamanho da palavra para comparação
+//         if(comparar > maiorPalavra) maiorPalavra = comparar; //Salva o tamanho da palavra se for maior do que a anterior
+//         printf("Inicio M: %d Fim M: %d Maior Palavra: %d \n", inicio, fim, maiorPalavra);
+//     }
+//     //Cria a nova string do tamanho da palavra
+//     char palavraMaior[maiorPalavra +1];
+    
+//     for( i = 0 , j = inicio; j <= fim; i++, j++){
+//         palavraMaior[i] = stringSemEspaco[j];
+//     }
+//     palavraMaior[j] = '\0';
+        
+//     puts(palavraMaior);
+// }
+
 // 83. é igual a 79.
+
+// 84. Escreva um programa em C que verifique se uma string normalizada é palíndrome (os mesmos caracteres quando lida da direita para a esquerda).
+#define TAM 200
+#define BRANCO 32
+int main()
+{
+    int i, j;
+    int iOriginal, iSemEspaco;
+    int palindrome = 0;
+    char string[TAM];
+    char stringSemEspaco[TAM];
+    
+    printf("Digite a string : ");
+    fgets(string, TAM, stdin);
+    
+    for(iOriginal = 0, iSemEspaco = 0 ; string[iOriginal] != '\0'; iOriginal++){
+        // 1º IF : Checa se a letra não é um espaco e se é uma vogal ou consoante (Maúscula ou Minuscula) para adcionar na nova string
+        if(string[iOriginal] != BRANCO && (string[iOriginal] >= 'A' && string[iOriginal] <= 'Z') || (string[iOriginal] >= 'a'&& string[iOriginal] <= 'z')){
+            // 2º IF> Se for uma letra Maúscula, transforma a letra maúscula em minúscula
+            if(string[iOriginal] >='A' && string[iOriginal] <='Z') string[iOriginal]+='a'-'A';
+            //Adciona as letras/consoantes minusculas ou transformadas em minusculas na nova string
+            stringSemEspaco[iSemEspaco] = string[iOriginal];
+            iSemEspaco++;
+        }
+    }
+    stringSemEspaco[iSemEspaco] = '\0';
+    
+    printf("%d \n", iSemEspaco);
+    puts(stringSemEspaco);
+
+    for(i = 0, j = (iSemEspaco-1); stringSemEspaco[i] != '\0'; i++, j--){ 
+        if(stringSemEspaco[i] == stringSemEspaco [j]) palindrome++;
+        printf(" Palindrome: %d | InicioS: %c | FimS: %c \n", palindrome, stringSemEspaco[i], stringSemEspaco[j]);
+    }
+    
+    if(palindrome == iSemEspaco){
+        printf("A palavra/frase é uma palindrome");
+    } else {
+        printf("A palavra/frase não é uma palindrome");
+    }
+}
+
+// 87. Escreva um programa em C, que verifique se duas strings são iguais, independente da caixa das letras.
+// Por exemplo, este programa deve dizer que “Teste”é igual a “TeStE”.
+// 87. Escreva um programa em C, que verifique se duas strings são iguais, independente da caixa das letras.
+// Por exemplo, este programa deve dizer que “Teste”é igual a “TeStE”.
+#define TAM 200
+#define IGUAL 1
+#define DIFERENTE 0
+int main()
+{
+    int i;
+    int tam1 = 0;
+    int tam2 = 0;
+    int comparacao = IGUAL;
+    char string1[TAM];
+    char string2[TAM];
+    
+    printf("Digite a sua primeira string: ");
+    fgets(string1, TAM, stdin);
+    
+    printf("Digite a sua segunda string: ");
+    fgets(string2, TAM, stdin);
+    
+    for(i = 0; string1[i] != '\0'; i++){
+        if(string1[i] >= 'A' && string1[i] <= 'Z') string1[i]+= 'a'- 'A';
+        tam1++;
+    } 
+    for(i = 0; string2[i] != '\0'; i++){
+        if(string2[i] >= 'A' && string2[i] <= 'Z') string2[i]+= 'a'- 'A';
+        tam2++;
+    } 
+    
+    if (tam1 != tam2){
+        printf ("As strings não são iguais");
+    } else {
+        for(i = 0; string1[i] != '\0'; i++){
+            if (string1[i] != string2[i]) comparacao = DIFERENTE;
+        }
+        if (comparacao == IGUAL) printf("As strings são iguais");
+        if (comparacao == DIFERENTE) printf("As strings são diferentes");
+    }
+}
+
+//88. Escreva um programa em C, que coloque a string lida toda em caixa alta.
+#define TAM 200
+int main()
+{
+    int i;
+    char string[TAM];
+    
+    printf("Digite sua string: ");
+    fgets(string, TAM, stdin);
+    
+    for(i = 0; string[i] != '\0'; i++){
+        if(string[i] >= 'a' && string[i] <= 'z') string[i] -= 'a'- 'A';
+    } 
+    puts(string);
+}
 
 // 91. Elabore um programa em C que leia valores inteiros para preencher uma matriz A 5 x 5. Você deverá criar adicionalmente dois vetores de 5 elementos:
 // somaLinhas e somaColunas. Em cada posição do vetor somaLinhas deverá ser armazenada a soma da linha correspondente na matriz A. Da mesma forma,
@@ -181,6 +381,7 @@ int main()
     int somarColunas[TAM];
     int posicao;
     
+    //Zerando os arrays das somas 
     for(i = 0; i < TAM; i++){
         somarLinhas[i] = 0;
         somarColunas[i] = 0;
@@ -214,7 +415,8 @@ int main()
     int i, j;
     int soma = 0;
     int multiplicacao = 1;
-  
+
+    // DIAGONAL PRINCIPAL = [I][I]
     // for(i = 0; i < DIM; i++){
     //     for(j = 0; j < DIM; j++){
     //         if(i == j) multiplicacao *= matriz[i][j];
@@ -225,6 +427,7 @@ int main()
         multiplicacao *= matriz[i][i];
     }
    
+    // DIAGONAL SECUNDÁRIA = [I][DIM - I - 1]
     // for (i = 0; i < DIM; i++){
     //     for(j = 0; j < DIM; j++){
     //         if (i + j == DIM-1){
@@ -383,4 +586,63 @@ int main()
         }
         printf("\n");
     }
+}
+
+// 97. Escrever um algoritmo e implementá-lo em linguagem C que leia uma matriz de valores inteiros 5 por 5 e a exiba. 
+// A seguir, leia dois números x e y e em seguida troque a xésima linha pela y-ésima linha, a x-ésima coluna com a y-ésima 
+// coluna, a diagonal principal com a secundária e, por fim mostre a matriz assim modificada.
+#define DIM 5
+int main()
+{
+    int matriz[DIM][DIM] = {{3, 4, 5, 6, 8},
+                            {1, 5, 2, 7, 9},
+                            {1, 2, 1, 2, 1},
+                            {6, 16, 9, 10, 4},
+                            {5, 7, 10, 5, 5}};
+    int arrayTemp[DIM];
+    int i, j;
+    int x, y;
+    
+    //Imprime a matriz original
+    for(i = 0; i < DIM; i++){
+        for(j = 0; j < DIM; j++){
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    } 
+    
+    printf("Digite um número entre 0 a 4 para as trocas: ");
+    scanf("%d", &x);
+    printf("Digite outro número entre 0 a 4 para as trocas: ");
+    scanf("%d", &y);
+    
+    //Troca x-linha pela y-linha :
+    for(i = 0; i < DIM; i++){ 
+        for(j = 0; j < DIM; j++){
+            arrayTemp[j] = matriz[x][j];
+            matriz[x][j] = matriz [y][j];
+            matriz [y][j] = arrayTemp[j];
+        }
+    }
+    //Troca x-coluna pela y-coluna (se declarado acima gera o mesmo resultado):
+    for(i = 0; i < DIM; i++){ 
+        for(j = 0; j < DIM; j++){
+            arrayTemp[j] = matriz[i][x];
+            matriz[i][x] = matriz [i][y];
+            matriz [i][y] = arrayTemp[j];
+        }
+    }
+    //Troca diagonal principal pela diagonal secundária :
+    for(i = 0; i < DIM; i++){
+        arrayTemp[i] = matriz[i][i];
+        matriz[i][i] = matriz [i][DIM - i - 1];
+        matriz [i][DIM - i - 1] = arrayTemp[i];
+    }
+    //Imprime a matriz resultado: 
+    for(i = 0; i < DIM; i++){
+        for(j = 0; j < DIM; j++){
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    } 
 }
