@@ -258,8 +258,8 @@ int main()
             if (inicio > inicioMaior) inicioMaior = inicio;  //Salva o indice do maior inicio
             if (fim > fimMaior) fimMaior = fim; //Salva o fim do maior inicio
         }
-        printf("Inicio: %d Fim: %d Maior Palavra: %d \n", inicio, fim, maiorPalavra);
-        printf("Inicio M: %d Fim M: %d \n", inicioMaior, fimMaior);
+        //printf("Inicio: %d Fim: %d Maior Palavra: %d \n", inicio, fim, maiorPalavra);
+        //printf("Inicio M: %d Fim M: %d \n", inicioMaior, fimMaior);
     }
     //Cria a nova string do tamanho da palavra
     char palavraMaior[maiorPalavra+1];
