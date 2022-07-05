@@ -5,16 +5,8 @@
     char str1[] = {'H', 'e', 'l', 'l', 'o', '\0'};
     //ou:
     char str2[] = "Hello";
-    
-    for(i = 0; str1[i] != '\0' ; i++){
-        printf("%c", str1[i]);
-    };
-    printf("\n");
-    for(i = 0; str2[i] != '\0' ; i++){
-        printf("%c", str2[i]);
-    };
+
 }
-    
 
 // 76. Escreva um programa em C, que leia uma string e conte quantas ocorrências de vogais existem nesta string.
 #define TAM 200
@@ -255,8 +247,8 @@ int main()
         comparar = fim - inicio; // Salva o tamanho da palavra para comparação
         if(comparar > maiorPalavra){
             maiorPalavra = comparar; //Salva o tamanho da palavra se for maior do que a anterior
-            if (inicio > inicioMaior) inicioMaior = inicio;  //Salva o indice do maior inicio
-            if (fim > fimMaior) fimMaior = fim; //Salva o fim do maior inicio
+            if (inicio > inicioMaior) inicioMaior = inicio;  //Salva o indice do inicio da maior palavra
+            if (fim > fimMaior) fimMaior = fim; //Salva o índice do fim da maior palavra
         }
         //printf("Inicio: %d Fim: %d Maior Palavra: %d \n", inicio, fim, maiorPalavra);
         //printf("Inicio M: %d Fim M: %d \n", inicioMaior, fimMaior);
@@ -315,52 +307,53 @@ int main()
 }
 
 // 85. Escreva um programa que leia uma string representando um número hexadecimal (base 16) e imprima o equivalente em decimal ( base 10).
-#define TAM 6
+#define TAM 8
 #define BASE 16
 
 int main()
 {
-   int i, j, k, valorDecimal;
-   int potenciaBase;
-   int decimal = 0;
-   char hexaD[TAM];
+    int i, j, k, valorDecimal;
+    int potenciaBase;
+    int decimal = 0;
+    char hexaD[TAM];
 
-   printf("Escreva o código hexadecimal:");
-   fgets(hexaD, TAM, stdin);
-
-   for(k = 0;hexaD[k+1] != '\0'; k++);
+    printf("Escreva o código hexadecimal: ");
+    fgets(hexaD, TAM, stdin);
+    
+    for(k = 0; hexaD[k+1] != '\0'; k++);
+    //Se o array tiver por ex 4 números, K após o for acima terá valor=4;
+    //Porém a potência de maior valor de um hexadecimal de 4 números deve ser 3:
     k--;
-   for(i = 0; hexaD[i+1] != '\0'; i++, k--){
+    printf("Maior potência: %d \n", k);
+  
+    for (i = 0; hexaD[i + 1] != '\0'; i++, k--){
+        switch (hexaD[i]){
+            case '0': valorDecimal = 0; break;
+            case '1': valorDecimal = 1; break;
+            case '2': valorDecimal = 2; break;
+            case '3': valorDecimal = 3; break;
+            case '4': valorDecimal = 4; break;
+            case '5': valorDecimal = 5; break;
+            case '6': valorDecimal = 6; break;
+            case '7': valorDecimal = 7; break;
+            case '8': valorDecimal = 8; break;
+            case '9': valorDecimal = 9; break;
+            case 'A': valorDecimal = 10; break;
+            case 'B': valorDecimal = 11; break;
+            case 'C': valorDecimal = 12; break;
+            case 'D': valorDecimal = 13; break;
+            case 'E': valorDecimal = 14; break;
+            case 'F': valorDecimal = 15; break;
+        }
 
-        switch(hexaD[i]){
-            case '0': valorDecimal = 0; break;
-            case '1': valorDecimal = 1; break;
-            case '2': valorDecimal = 2; break;
-            case '3': valorDecimal = 3; break;
-            case '4': valorDecimal = 4; break;
-            case '5': valorDecimal = 5; break;
-            case '6': valorDecimal = 6; break;
-            case '7': valorDecimal = 7; break;
-            case '8': valorDecimal = 8; break;
-            case '9': valorDecimal = 9; break;
-            case 'A': valorDecimal = 10; break;
-            case 'B': valorDecimal = 11; break;
-            case 'C': valorDecimal = 12; break;
-            case 'D': valorDecimal = 13; break;
-            case 'E': valorDecimal = 14; break;
-            case 'F': valorDecimal = 15; break;
-        }
-   
-            for(j = k, potenciaBase = 1; j >= 1; j--){
-                    potenciaBase *= BASE;
-                    printf("%d", potenciaBase);
-            }
-        
-
-        printf("Char: %c, valorDecimal: %d potenciaBase: %d \n", hexaD[i], valorDecimal , potenciaBase);
-        decimal += valorDecimal*potenciaBase;
-   }
-   printf("O valor do hexadecimal transformado em decimal é igual a:  %d", decimal);
+        for (j = k, potenciaBase = 1; j >= 1; j--){
+            potenciaBase = potenciaBase*BASE;
+        }
+        //printf(" \n Potencia Base : %d \n", potenciaBase);
+        //printf("Char: %c, valorDecimal: %d potenciaBase: %d \n", hexaD[i], valorDecimal, potenciaBase);
+        decimal += valorDecimal * potenciaBase;
+    }
+    printf("O valor do hexadecimal transformado em decimal é igual a: %d", decimal);
 }
 
 // 87. Escreva um programa em C, que verifique se duas strings são iguais, independente da caixa das letras.
