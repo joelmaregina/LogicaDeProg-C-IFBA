@@ -412,6 +412,100 @@ int main()
     puts(string);
 }
 
+// 89. Escreva um programa em C, que gere uma string composta pelo último nome, seguido de virgula e as iniciais dos demais nomes (em ordem), 
+// seguida de ponto. Por exemplo, se a string entrada for “Gabriel Garcia Marquez”, a string gerada deve ser “Marquez, G. G.”.
+#define TAM 200
+int main()
+{
+    int i, j, l;
+    int flag = 0;
+    int k = 0;
+    int inicio, fim;
+    char nome[TAM];
+    char sobrenomes[TAM];
+    char ultimoSobre[TAM];
+    char citacao[TAM];
+
+    printf("Digite o nome : ");
+    fgets(nome, TAM, stdin);
+    
+    for(i = 0; nome[i] != '\0'; i++){
+        //Para armazenar o início de cada nome:
+        if (nome[i] == BRANCO) flag = 0;
+        if (nome[i] != BRANCO && flag == 0){
+            inicio = i;
+            flag++;
+            // printf("\n %d %c \n", i, nome[i]);
+            sobrenomes[k++] = nome[inicio];
+        }
+        
+        // Confere a ultima letra do nome:
+        for (j = i; nome[j] != '\0'; j++){
+            if (nome[j] != BRANCO){
+                fim = j;
+            }
+        }
+        // Monta o ultimo sobrenome:
+        for(j = inicio, l = 0; j <= fim; j++, l++){
+            ultimoSobre[l] = nome[j];
+        }
+        ultimoSobre[l] = '\0';
+    }
+    sobrenomes[k] = '\0';
+    puts(sobrenomes);
+    
+    for(j = 0; ultimoSobre[j+1] != '\0'; j++); // Conta o número de letras do ultimo sobrenome
+    for (i = 0; i < j ; i++){ // Adciona o ultimo sobrenome na string final
+        citacao[i] = ultimoSobre[i];
+    }
+    citacao[i++] = ','; 
+    citacao[i++] = ' ';
+    for(j = 0; sobrenomes[j+1] != '\0'; j++); // Conta o número de iniciais dos sobrenomes + nome
+    l = i + (j*3); //Atualiza o limite máximo da string final, reservando espaços para os pontos e virgulas
+    for(k = 0 ; i < l; i++, k++){ // i < l - Deixa de fora a ultima inicial (A do nome);
+        citacao[i++] = sobrenomes[k];
+        citacao[i++] = '.';
+        citacao[i] = ' ';
+    }
+    citacao[i] = '\0';
+    puts(citacao);
+}
+
+// 90. Escreva um programa em C, que dado uma string, crie uma nova string contendo na ordem em que aparecem no string dado, as vogais no 
+// começo e as consoantes no final.
+#define TAM 200
+int main()
+{
+    int i;
+    int j = 0;
+    char string[TAM];
+    char vogalConsoante[TAM];
+
+    printf("Digite a string : ");
+    fgets(string, TAM, stdin);
+    
+    for(i = 0; string[i] != '\0'; i++){
+        // Avalia se o caracter avaliado pertence ao alfabeto
+        if((string[i] >= 'A' && string[i] <= 'Z') || (string[i] >= 'a' && string[i] <= 'z')){
+            // Adiciona o que É VOGAL na ordem em que aparecem à string final
+            if(string[i] == 'a' || string[i] == 'e' || string[i] == 'i' || string[i] == 'o' || string[i] == 'u' || string[i] == 'A' || string[i] == 'E' || string[i] == 'I' || string[i] == 'O' ||string[i] == 'U' ){
+                vogalConsoante[j++] = string[i];
+            }
+        }
+    }
+    for(i = 0; string[i] != '\0'; i++){
+        //Avalia se o caracter avaliado pertence ao alfabeto
+        if((string[i] >= 'A' && string[i] <= 'Z') || (string[i] >= 'a' && string[i] <= 'z')){
+            // Adciona o que NÃO É VOGAL ( == consoante) à string final
+            if(!(string[i] == 'a' || string[i] == 'e' || string[i] == 'i' || string[i] == 'o' || string[i] == 'u' || string[i] == 'A' || string[i] == 'E' || string[i] == 'I' || string[i] == 'O' ||string[i] == 'U')){
+                vogalConsoante[j++] = string[i];
+            }
+        }
+    }
+    string[i] = '\0';
+    puts(vogalConsoante);
+}
+
 // 91. Elabore um programa em C que leia valores inteiros para preencher uma matriz A 5 x 5. Você deverá criar adicionalmente dois vetores de 5 elementos:
 // somaLinhas e somaColunas. Em cada posição do vetor somaLinhas deverá ser armazenada a soma da linha correspondente na matriz A. Da mesma forma,
 // em cada posição do vetor somaColunas deverá ser armazenada a soma da coluna correspondente na matriz A.
